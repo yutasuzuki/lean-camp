@@ -1,0 +1,17 @@
+.p-footer {
+  background-color: #273444;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__nav-item {
+
+  }
+
+  &__nav-anchor {
+    color: #fff;
+    font-size: 12px;
+  }
+}

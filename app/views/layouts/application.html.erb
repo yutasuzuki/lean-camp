@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LeanCanvasPrototype</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+
+  <body>
+    <div class='content'>
+      <header class='l-header p-header'>
+        <h1 class='p-header__logo'>
+          <a class='p-header__logo-anchor' href='/'>lean canvas prototype</a>
+        </h1>
+        <nav class='p-header__nav'>
+          <% if user_signed_in? %>
+            <%= link_to current_user.username, top_show_path, { :class => "class_1"} %>
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'playground', playground_lean_canvas_path, { :class => 'p-header__playground'} %>
+            <%= link_to 'SIGN IN', new_user_session_path, { :class => 'p-header__signin'} %>
+            <%= link_to 'SIGN UP', new_user_registration_path, { :class => 'p-header__signup'} %>
+          <% end %>
+        </nav>
+      </header>
+      <main class='l-main'>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </main>
+    </div>
+    <footer class='p-footer'>
+      <nav class='p-footer__nav'>
+        <ul>
+          <li class='p-footer__nav-item'>
+            <%= link_to 'playground', playground_lean_canvas_path, { :class => 'p-footer__nav-anchor'} %>
+          </li>
+        </ul>
+      </nav>
+      <div class='p-copyright'>
+        <small class='p-copyright__text'>© lean canvas prototype</small>
+      </div>
+    <footer>
+    <%= javascript_include_tag 'index' %>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+.p-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, .96);
+  padding: 6px 3vw 8px;
+
+  &__logo {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  &__logo-anchor {
+    color: $text-color-primary;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: $text-color-primary;
+      text-decoration: none;
+    }
+  }
+
+  &__nav {
+    & > * {
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px;
+      color: $nav-link-color;
+      text-decoration: none;
+      margin-right: 10px;
+      line-height: 1.5;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+
+      &:hover {
+        color: $nav-link-color-hover;
+      }
+    }
+  }
+
+  &__playground {
+  }
+
+  &__signin {
+  }
+
+  &__signup {
+    font-family: 'Raleway', sans-serif;
+    padding: 6px 15px 5px;
+    font-size: 12px;
+    text-decoration: none;
+    color: #fff;
+    background-color: $btn-color-primary;
+    border-radius: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+
+    &:hover {
+      color: #fff;
+      background-color: $btn-color-hover;
+    }
+  }
+}

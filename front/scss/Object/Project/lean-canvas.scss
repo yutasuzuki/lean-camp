@@ -1,0 +1,124 @@
+.p-lean-canvas {
+  display: grid;
+  grid-template-rows: max-content;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-areas:
+    "problem  problem  solution    solution    unique-value unique-value advantage advantage customer-segments customer-segments"
+    "existing existing key-metrics key-metrics concept      concept      channels  channels  early-adopter     early-adopter"
+    "cost     cost     cost        cost        cost         revenue      revenue   revenue   revenue           revenue";
+  
+  border: 2px solid $border-color-primary;
+  border-radius: 4px;
+  background-color: #fff;
+
+  &__cell {
+    min-height: 240px;
+    padding: 10px;
+
+    &--problem {
+      grid-area: problem;
+      border-right: 2px solid $border-color-primary;
+    }
+
+    &--existing {
+      grid-area: existing;
+      border-right: 2px solid $border-color-primary;
+    }
+
+    &--solution {
+      grid-area: solution;
+      border-right: 2px solid $border-color-primary;
+      border-bottom: 2px solid $border-color-primary;
+    }
+
+    &--key-metrics {
+      grid-area: key-metrics;
+      border-right: 2px solid $border-color-primary;
+    }
+
+    &--unique-value {
+      grid-area: unique-value;
+      border-right: 2px solid $border-color-primary;
+    }
+
+    &--concept {
+      grid-area: concept;
+      border-right: 2px solid $border-color-primary;
+    }
+
+    &--advantage {
+      grid-area: advantage;
+      border-right: 2px solid $border-color-primary;
+      border-bottom: 2px solid $border-color-primary;
+    }
+
+    &--channels {
+      grid-area: channels;
+      border-right: 2px solid $border-color-primary;
+    }
+
+    &--customer-segments {
+      grid-area: customer-segments;
+    }
+
+    &--early-adopter {
+      grid-area: early-adopter;
+    }
+
+    &--cost {
+      grid-area: cost;
+      border-right: 2px solid $border-color-primary;
+      border-top: 2px solid $border-color-primary;
+    }
+
+    &--revenue {
+      grid-area: revenue;
+      border-top: 2px solid $border-color-primary;
+    }
+  }
+
+  &__title {
+    font-size: 1vw;
+    $color: $text-color-primary;
+    font-weight: bold;
+    margin: 0 0 10px;
+  }
+
+  &__subtitle {
+    font-size: .8vw;
+    $color: $text-color-primary;
+    font-weight: normal;
+    margin: 0;
+    opacity: .6;
+  }
+
+  &__textarea {
+    width: 100%;
+    margin-top: 5px;
+    border: 0;
+    outline: 0;
+    resize: none;
+  }
+}
+
+.p-lean-canvas-title {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $border-color-primary;
+  min-width: 500px;
+
+  &__text {
+    width: 100px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+  }
+
+  &__input {
+    outline: 0;
+    border: 0;
+    width: 90%;
+    padding-bottom: 5px;
+    padding-left: 20px;
+  }
+}
