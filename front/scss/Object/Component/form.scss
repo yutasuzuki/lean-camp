@@ -1,0 +1,29 @@
+.c-form {
+  display: flex;
+  align-items: center;
+  align-content: flex-start;
+  border-bottom: 1px $border-color-primary solid;
+
+  input {
+    width: 100%;
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 1000px white inset;
+      color: #0b77a7;
+    }
+  }
+
+  &__label {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    flex: 3;
+    font-size: 16px;
+  }
+
+  &__input {
+    flex: 9;
+    padding: 8px 24px 8px 0;
+    color: #0b77a7;
+    font-size: 16px;
+  } 
+}

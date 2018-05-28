@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_091929) do
+ActiveRecord::Schema.define(version: 2018_05_27_070337) do
+
+  create_table "lean_canvas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "problem"
+    t.text "solution"
+    t.text "unique_value"
+    t.text "advantage"
+    t.text "customer_segments"
+    t.text "existing"
+    t.text "key_metrics"
+    t.text "concept"
+    t.text "channels"
+    t.text "early_adopter"
+    t.text "cost"
+    t.text "revenue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "service_name"
+  end
 
   create_table "models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false

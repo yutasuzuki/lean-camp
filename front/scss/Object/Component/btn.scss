@@ -1,0 +1,28 @@
+.c-btn {
+  &--primary {
+    display: inline-block;
+    background-color: $btn-color-primary;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 16px;
+    padding: 8px 16px;
+    transition: .2s ease-in;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      background-color: $btn-color-hover;
+    }
+  }
+
+  &--large {
+    font-size: 20px;
+    border-radius: 32px;
+    padding: 16px 32px;
+    letter-spacing: .1em;
+    cursor: pointer;
+  }
+}

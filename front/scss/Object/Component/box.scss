@@ -1,0 +1,41 @@
+.c-box {
+  &--notice {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    color: #fff;
+    border: 1px #ffc82c solid;
+    padding: 8px 16px;
+    background-color: #ffc82c;
+    border-radius: 4px;
+    font-weight: bold;
+    z-index: 10;
+    animation: notice 5s ease-in-out .5s;
+    opacity: 0;
+  }
+
+  &--alert {
+
+  }
+}
+
+@keyframes notice {
+  0% {
+    transform: translateX(-50%) translateY(-100px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(-50%) translateY(24px);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(-50%) translateY(24px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-100px);
+    opacity: 0;
+  }
+}

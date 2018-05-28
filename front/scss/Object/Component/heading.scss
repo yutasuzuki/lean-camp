@@ -1,0 +1,23 @@
+.c-heading {
+  &--border {
+    position: relative;
+    display: inline-block;
+    color: $text-color-primary;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    padding-bottom: 16px;
+    margin: 0;
+    letter-spacing: .075em;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -24px;
+      width: 48px;
+      height: 4px;
+      background-color: $text-color-primary;
+    }
+  }
+}

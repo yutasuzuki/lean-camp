@@ -1,2 +1,6 @@
 <h1>こんにちは、<%= current_user.username %>さん</h1>
+
+<% @lean_canvas.each do |writer| %>
+  <p><%= writer.service_name %></p>
+<% end %>
 <p>ユーザー用ページです。</p>

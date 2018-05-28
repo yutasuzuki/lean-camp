@@ -4,6 +4,12 @@
   justify-content: space-between;
   background-color: rgba(255, 255, 255, .96);
   padding: 6px 3vw 8px;
+  transition: .2s ease-in;
+
+  &.is-top {
+    padding: 40px 3vw 8px;
+    background-color: rgba(255, 255, 255, 0);
+  }
 
   &__logo {
     font-family: 'Quicksand', sans-serif;
@@ -24,6 +30,7 @@
 
   &__nav {
     & > * {
+      display: inline-block;
       font-family: 'Raleway', sans-serif;
       font-size: 12px;
       color: $nav-link-color;
@@ -38,6 +45,10 @@
         color: $nav-link-color-hover;
       }
     }
+  }
+
+  &__signout {
+    font-weight: bold;
   }
 
   &__playground {

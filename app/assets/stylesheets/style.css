@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! sanitize.css v5.0.0 | CC0 License | github.com/jonathantneal/sanitize.css */
 /* Document (https://html.spec.whatwg.org/multipage/semantics.html#semantics)
    ========================================================================== */
@@ -512,6 +513,10 @@ textarea,
 [aria-disabled] {
   cursor: default; }
 
+input {
+  border: 0;
+  outline: 0; }
+
 * {
   box-sizing: border-box;
   color: #4e5067; }
@@ -522,14 +527,262 @@ body {
 .content {
   background-color: #f2f3f6; }
 
+/* Radio ---------------------------------------------------*/
+input[type="radio"] {
+  display: none;
+  /*checked時の見た目*/ }
+  input[type="radio"] + label {
+    display: block;
+    cursor: pointer;
+    /*通常時の見た目*/
+    /*hover時の見た目*/ }
+    input[type="radio"] + label:before {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      content: "";
+      border-radius: 17px;
+      vertical-align: middle;
+      border: 2px solid #dddddd;
+      background-color: #f0f0f0;
+      margin: -2px 5px 0 0;
+      transition: .1s; }
+    input[type="radio"] + label:hover {
+      color: #808080; }
+      input[type="radio"] + label:hover::before {
+        background-color: #fff; }
+  input[type="radio"]:checked + label {
+    color: #36bbe7;
+    cursor: default; }
+    input[type="radio"]:checked + label::before {
+      border-color: #36bbe7 !important;
+      background-color: #36bbe7 !important;
+      box-shadow: inset 0 0 0 7px #fff; }
+
+/* Checkbox ------------------------------------------------*/
+input[type="checkbox"] {
+  display: none;
+  /*checked時の見た目*/ }
+  input[type="checkbox"] + label {
+    display: block;
+    cursor: pointer;
+    /*通常時の見た目*/
+    /*hover時の見た目*/ }
+    input[type="checkbox"] + label:before {
+      content: "\2713";
+      width: 24px;
+      height: 24px;
+      line-height: 22px;
+      font-size: 22px;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      color: transparent;
+      padding: 0;
+      border-radius: 4px;
+      border: 2px solid #dddddd;
+      background: #f0f0f0;
+      margin: -3px 12px 0 0;
+      transition: .1s;
+      box-sizing: border-box; }
+    input[type="checkbox"] + label:hover {
+      color: #808080; }
+      input[type="checkbox"] + label:hover::before {
+        background-color: #fff; }
+  input[type="checkbox"]:checked + label {
+    color: #36bbe7; }
+    input[type="checkbox"]:checked + label:before {
+      background: #fff !important;
+      border-color: #36bbe7 !important;
+      color: #36bbe7 !important; }
+
 .l-header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0; }
+  right: 0;
+  z-index: 9; }
 
 .l-main {
   padding: 3vw; }
+
+.l-main-devise {
+  width: 480px;
+  margin: 80px auto 120px; }
+
+.c-box--notice {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  color: #fff;
+  border: 1px #ffc82c solid;
+  padding: 8px 16px;
+  background-color: #ffc82c;
+  border-radius: 4px;
+  font-weight: bold;
+  z-index: 10;
+  animation: notice 5s ease-in-out .5s;
+  opacity: 0; }
+
+@keyframes notice {
+  0% {
+    transform: translateX(-50%) translateY(-100px);
+    opacity: 0; }
+  10% {
+    transform: translateX(-50%) translateY(24px);
+    opacity: 1; }
+  90% {
+    transform: translateX(-50%) translateY(24px);
+    opacity: 1; }
+  100% {
+    transform: translateX(-50%) translateY(-100px);
+    opacity: 0; } }
+
+.c-btn--primary {
+  display: inline-block;
+  background-color: #369EFB;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 16px;
+  padding: 8px 16px;
+  transition: .2s ease-in;
+  cursor: pointer; }
+  .c-btn--primary:hover {
+    color: #fff;
+    background-color: #2a85d7; }
+
+.c-btn--large {
+  font-size: 20px;
+  border-radius: 32px;
+  padding: 16px 32px;
+  letter-spacing: .1em;
+  cursor: pointer; }
+
+.c-form {
+  display: flex;
+  align-items: center;
+  align-content: flex-start;
+  border-bottom: 1px #273444 solid; }
+  .c-form input {
+    width: 100%; }
+    .c-form input:-webkit-autofill {
+      box-shadow: 0 0 0 1000px white inset;
+      color: #0b77a7; }
+  .c-form__label {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    flex: 3;
+    font-size: 16px; }
+  .c-form__input {
+    flex: 9;
+    padding: 8px 24px 8px 0;
+    color: #0b77a7;
+    font-size: 16px; }
+
+.c-heading--border {
+  position: relative;
+  display: inline-block;
+  color: #273444;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  padding-bottom: 16px;
+  margin: 0;
+  letter-spacing: .075em; }
+  .c-heading--border:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -24px;
+    width: 48px;
+    height: 4px;
+    background-color: #273444; }
+
+.c-lean-canvas {
+  display: grid;
+  grid-template-rows: max-content;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-areas: "problem  problem  solution    solution    unique-value unique-value advantage advantage customer-segments customer-segments" "existing existing key-metrics key-metrics concept      concept      channels  channels  early-adopter     early-adopter" "cost     cost     cost        cost        cost         revenue      revenue   revenue   revenue           revenue";
+  border: 2px solid #273444;
+  border-radius: 4px;
+  background-color: #fff; }
+  .c-lean-canvas__cell {
+    min-height: 240px;
+    padding: 10px; }
+    .c-lean-canvas__cell--problem {
+      grid-area: problem;
+      border-right: 2px solid #273444; }
+    .c-lean-canvas__cell--existing {
+      grid-area: existing;
+      border-right: 2px solid #273444; }
+    .c-lean-canvas__cell--solution {
+      grid-area: solution;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-lean-canvas__cell--key-metrics {
+      grid-area: key-metrics;
+      border-right: 2px solid #273444; }
+    .c-lean-canvas__cell--unique-value {
+      grid-area: unique-value;
+      border-right: 2px solid #273444; }
+    .c-lean-canvas__cell--concept {
+      grid-area: concept;
+      border-right: 2px solid #273444; }
+    .c-lean-canvas__cell--advantage {
+      grid-area: advantage;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-lean-canvas__cell--channels {
+      grid-area: channels;
+      border-right: 2px solid #273444; }
+    .c-lean-canvas__cell--customer-segments {
+      grid-area: customer-segments; }
+    .c-lean-canvas__cell--early-adopter {
+      grid-area: early-adopter; }
+    .c-lean-canvas__cell--cost {
+      grid-area: cost;
+      border-right: 2px solid #273444;
+      border-top: 2px solid #273444; }
+    .c-lean-canvas__cell--revenue {
+      grid-area: revenue;
+      border-top: 2px solid #273444; }
+  .c-lean-canvas__title {
+    font-size: 1vw;
+    font-weight: bold;
+    margin: 0 0 10px; }
+  .c-lean-canvas__subtitle {
+    font-size: .8vw;
+    font-weight: normal;
+    margin: 0;
+    opacity: .6; }
+  .c-lean-canvas__textarea {
+    width: 100%;
+    margin-top: 5px;
+    border: 0;
+    outline: 0;
+    resize: none; }
+
+.c-lean-canvas-title {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #273444;
+  min-width: 500px; }
+  .c-lean-canvas-title__text {
+    width: 100px;
+    padding-left: 10px;
+    padding-bottom: 5px; }
+  .c-lean-canvas-title__input {
+    outline: 0;
+    border: 0;
+    width: 90%;
+    padding-bottom: 5px;
+    padding-left: 20px; }
 
 .p-copyright {
   width: 100%;
@@ -539,7 +792,9 @@ body {
     color: #fff; }
 
 .p-footer {
-  background-color: #273444; }
+  position: relative;
+  background-color: #273444;
+  z-index: 1; }
   .p-footer__nav {
     display: flex;
     justify-content: space-between; }
@@ -547,12 +802,36 @@ body {
     color: #fff;
     font-size: 12px; }
 
+.p-form-devise__heading {
+  text-align: center;
+  margin-bottom: 60px; }
+
+.p-form-devise__item {
+  margin-bottom: 42px; }
+
+.p-form-devise__checkbox {
+  margin: -12px auto 36px;
+  text-align: center; }
+
+.p-form-devise__submit {
+  text-align: center;
+  margin-bottom: 68px; }
+
+.p-form-devise__link > * {
+  margin-right: 16px; }
+  .p-form-devise__link > *:last-child {
+    margin-right: 0; }
+
 .p-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.96);
-  padding: 6px 3vw 8px; }
+  padding: 6px 3vw 8px;
+  transition: .2s ease-in; }
+  .p-header.is-top {
+    padding: 40px 3vw 8px;
+    background-color: rgba(255, 255, 255, 0); }
   .p-header__logo {
     font-family: 'Quicksand', sans-serif;
     margin: 0;
@@ -564,6 +843,7 @@ body {
       color: #273444;
       text-decoration: none; }
   .p-header__nav > * {
+    display: inline-block;
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
     color: #5C6773;
@@ -575,6 +855,8 @@ body {
     font-weight: bold; }
     .p-header__nav > *:hover {
       color: #273444; }
+  .p-header__signout {
+    font-weight: bold; }
   .p-header__signup {
     font-family: 'Raleway', sans-serif;
     padding: 6px 15px 5px;
@@ -590,88 +872,101 @@ body {
       color: #fff;
       background-color: #2a85d7; }
 
-.p-lean-canvas {
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-areas: "problem  problem  solution    solution    unique-value unique-value advantage advantage customer-segments customer-segments" "existing existing key-metrics key-metrics concept      concept      channels  channels  early-adopter     early-adopter" "cost     cost     cost        cost        cost         revenue      revenue   revenue   revenue           revenue";
-  border: 2px solid #273444;
-  border-radius: 4px;
-  background-color: #fff; }
-  .p-lean-canvas__cell {
-    min-height: 240px;
-    padding: 10px; }
-    .p-lean-canvas__cell--problem {
-      grid-area: problem;
-      border-right: 2px solid #273444; }
-    .p-lean-canvas__cell--existing {
-      grid-area: existing;
-      border-right: 2px solid #273444; }
-    .p-lean-canvas__cell--solution {
-      grid-area: solution;
-      border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
-    .p-lean-canvas__cell--key-metrics {
-      grid-area: key-metrics;
-      border-right: 2px solid #273444; }
-    .p-lean-canvas__cell--unique-value {
-      grid-area: unique-value;
-      border-right: 2px solid #273444; }
-    .p-lean-canvas__cell--concept {
-      grid-area: concept;
-      border-right: 2px solid #273444; }
-    .p-lean-canvas__cell--advantage {
-      grid-area: advantage;
-      border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
-    .p-lean-canvas__cell--channels {
-      grid-area: channels;
-      border-right: 2px solid #273444; }
-    .p-lean-canvas__cell--customer-segments {
-      grid-area: customer-segments; }
-    .p-lean-canvas__cell--early-adopter {
-      grid-area: early-adopter; }
-    .p-lean-canvas__cell--cost {
-      grid-area: cost;
-      border-right: 2px solid #273444;
-      border-top: 2px solid #273444; }
-    .p-lean-canvas__cell--revenue {
-      grid-area: revenue;
-      border-top: 2px solid #273444; }
-  .p-lean-canvas__title {
-    font-size: 1vw;
-    font-weight: bold;
-    margin: 0 0 10px; }
-  .p-lean-canvas__subtitle {
-    font-size: .8vw;
-    font-weight: normal;
-    margin: 0;
-    opacity: .6; }
-  .p-lean-canvas__textarea {
-    width: 100%;
-    margin-top: 5px;
-    border: 0;
-    outline: 0;
-    resize: none; }
+.p-main__canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0; }
 
-.p-lean-canvas-title {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #273444;
-  min-width: 500px; }
-  .p-lean-canvas-title__text {
-    width: 100px;
-    padding-left: 10px;
-    padding-bottom: 5px; }
-  .p-lean-canvas-title__input {
-    outline: 0;
-    border: 0;
-    width: 90%;
-    padding-bottom: 5px;
-    padding-left: 20px; }
+.p-main-top {
+  margin-top: 40px;
+  background-color: #fff;
+  z-index: 1; }
+
+.p-mainvisual {
+  position: relative;
+  width: 100%;
+  height: 684px; }
+  .p-mainvisual__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    padding-top: 152px;
+    margin-left: 96px;
+    margin-right: 96px; }
+  .p-mainvisual__explanation {
+    flex: 4; }
+  .p-mainvisual__artwork {
+    flex: 5;
+    padding-left: 60px; }
+  .p-mainvisual__text {
+    color: #4e5067; }
+  .p-mainvisual__signup {
+    text-align: center;
+    padding: 16px 0; }
+  .p-mainvisual__heading--top {
+    text-align: center;
+    font-size: 36px;
+    margin: -15px 0 10px;
+    padding: 5px 0;
+    color: #273444;
+    font-weight: lighter; }
+    .p-mainvisual__heading--top:before {
+      content: '"';
+      position: relative;
+      top: -10px;
+      left: -15px; }
+    .p-mainvisual__heading--top:after {
+      content: '"';
+      position: relative;
+      bottom: -30px;
+      right: -15px; }
+  .p-mainvisual__logo {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 38px; }
+
+.p-top-content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 120px; }
+  .p-top-content__heading {
+    text-align: center;
+    margin-bottom: 48px; }
+  .p-top-content__description {
+    text-align: center;
+    margin-bottom: 24px; }
+  .p-top-content__caption {
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 36px; }
+  .p-top-content__btn {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center; }
+
+.c-container {
+  margin-left: 3vw;
+  margin-right: 3vw; }
 
 .u-flex-row-between {
   display: flex;
   flex-direction: row;
   justify-content: space-between; }
+
+.u-text--center {
+  text-align: center; }
+
+.u-text--left {
+  text-align: left; }
+
+.u-text--right {
+  text-align: right; }
+
+.u-width--full {
+  width: 100%; }

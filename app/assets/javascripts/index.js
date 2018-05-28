@@ -76,10 +76,9 @@
   !*** ./front/scripts/index.js ***!
   \********************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-eval("\n\ndocument.querySelectorAll('.js-texarea').forEach(function (textarea) {\n  textarea.addEventListener('change', textAutoHeightHandler);\n  textarea.addEventListener('input', textAutoHeightHandler);\n  textAutoHeightHandler.call(textarea);\n});\n\nfunction textAutoHeightHandler() {\n  this.style.height = '142px';\n  // 1行の長さを取得する\n  var lineHeight = parseInt(this.style.lineHeight.replace(/px/, ''));\n  // 最低2行の表示エリアにする\n  var doubleLineHeight = lineHeight * 2;\n  var scrollHeight = parseInt(this.scrollHeight);\n  if (scrollHeight < doubleLineHeight) {\n    scrollHeight = doubleLineHeight;\n  }\n  this.style.height = scrollHeight + 'px';\n}\n\n//# sourceURL=webpack:///./front/scripts/index.js?");
+eval("\n\n//# sourceURL=webpack:///./front/scripts/index.js?");
 
 /***/ })
 

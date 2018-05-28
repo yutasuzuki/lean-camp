@@ -1,4 +1,4 @@
-.p-lean-canvas {
+.c-lean-canvas {
   display: grid;
   grid-template-rows: max-content;
   grid-template-columns: repeat(10, 1fr);
@@ -101,7 +101,7 @@
   }
 }
 
-.p-lean-canvas-title {
+.c-lean-canvas-title {
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;

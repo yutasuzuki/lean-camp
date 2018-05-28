@@ -10,6 +10,7 @@ const paths = {
 
 const entry = {
   index: path.join(paths.entry, 'index.js'),
+  app: path.join(paths.entry, 'mypage/app.jsx'),
 };
 
 module.exports = {
@@ -23,20 +24,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          plugins: ['transform-runtime'],
-          presets: ['env']
+          plugins: ['transform-react-jsx', 'transform-runtime'],
+          presets: [
+            [
+              'env', {'modules': false}
+            ],
+            'react'
+          ]
         }
-      }
+      },
     ]
   },
   resolve: {
     modules: [
       'node_modules',
     ],
-    extensions: ['json', '.tsx', '.ts', '.js'],
+    extensions: ['json', '.tsx', '.ts', '.jsx', '.js'],
   },
 };

@@ -10,29 +10,27 @@
   </head>
 
   <body>
-    <div class='content'>
-      <header class='l-header p-header'>
-        <h1 class='p-header__logo'>
-          <a class='p-header__logo-anchor' href='/'>lean canvas prototype</a>
-        </h1>
-        <nav class='p-header__nav'>
-          <% if user_signed_in? %>
-            <%= link_to current_user.username, top_show_path, { :class => "class_1"} %>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to 'playground', playground_lean_canvas_path, { :class => 'p-header__playground'} %>
-            <%= link_to 'SIGN IN', new_user_session_path, { :class => 'p-header__signin'} %>
-            <%= link_to 'SIGN UP', new_user_registration_path, { :class => 'p-header__signup'} %>
-          <% end %>
-        </nav>
-      </header>
-      <main class='l-main'>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= yield %>
-      </main>
-    </div>
+    <header id='js-header' class='l-header p-header <%= current_page?(root_path)? 'is-top': '' %>'>
+      <h1 class='p-header__logo'>
+        <a class='p-header__logo-anchor' href='/'>LEAN CAMP</a>
+      </h1>
+      <nav class='p-header__nav'>
+        <% if user_signed_in? %>
+          <%= link_to current_user.username, mypage_path, { :class => "class_1"} %>
+          <%= link_to 'プロフィール変更', edit_user_registration_path %>
+          <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => 'p-header__signout' %>
+        <% else %>
+          <%= link_to 'playground', playground_lean_canvas_path, { :class => 'p-header__playground'} %>
+          <%= link_to 'SIGN IN', new_user_session_path, { :class => 'p-header__signin'} %>
+          <%= link_to 'SIGN UP', new_user_registration_path, { :class => 'p-header__signup'} %>
+        <% end %>
+      </nav>
+    </header>
+    <% if notice %>
+      <p class="c-box--notice"><%= notice %></p>
+    <% end %>
+    <p class="c-box--alert"><%= alert %></p>
+    <%= yield %>
     <footer class='p-footer'>
       <nav class='p-footer__nav'>
         <ul>

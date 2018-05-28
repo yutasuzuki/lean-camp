@@ -1,5 +1,7 @@
 .p-footer {
+  position: relative;
   background-color: #273444;
+  z-index: 1;
 
   &__nav {
     display: flex;

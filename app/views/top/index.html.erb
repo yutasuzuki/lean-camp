@@ -1,1 +1,153 @@
+<div class='p-main__canvas' id='js-particle'></div>
+<main class='p-main-top'>
+  <div class='p-mainvisual'>
+    <div class='p-mainvisual__item'>
+      <div class='p-mainvisual__explanation'>
+        <h1 class='p-mainvisual__heading--top'><span class='p-mainvisual__logo'>LEAN CAMP</span>はサービスを<br>成長させるサービスです</h1>
+        <p class='p-mainvisual__text'>
+          スタートアップはとても希望に満ち溢れています。<br>
+          やり方にルールはありません。<br>
+          しかしLEANフレームワークを使うことは、あなたのサービスを<br>グロースする助けになるでしょう。
+        </p>
+        <p class='p-mainvisual__text'>
+          LEAN CAMPではそんなサービスをグロースさせるフレームワークを<br>用意しています。
+        </p>
+        <div class='p-mainvisual__signup'>
+          <%= link_to '無料会員登録', new_user_registration_path, { :class => 'c-btn--primary c-btn--large'} %>
+        </div>
+      </div>
+      <div class='p-mainvisual__artwork'>
+        <img class='u-width--full' src='./assets/lcp.png'>
+      </div>
+    </div>
+  </div>
+  <div class='p-top-content'>
+    <div class='p-top-content__heading'>
+      <h2 class='c-heading--border'>
+        LEAN CANVAS
+      </h2>
+    </div>
+    <p class='p-top-content__description'>
+      LEAN CANVASは1ページで作るビジネスモデルの設計図です。<br>
+      項目に沿って作成することでビジネスモデルの有効性と検証することができます。<br>
+      またビジネスモデルの転換や移行のきっかけとしても有用です。
+    </p>
+    <div class='p-top-content__caption'>
+      <img class='u-width--full' src='./assets/lcp.png'>
+    </div>
+    <div class='p-top-content__btn'>
+      <%= link_to 'Try Playground', playground_lean_canvas_path, { :class => 'c-btn--primary c-btn--large'} %>
+    </div>
+  </div>
+  <div class='p-top-content'>
+    <div class='p-top-content__heading'>
+      <h2 class='c-heading--border'>OKR</h2>
+    </div>
+    <p class='p-top-content__description'>
+      LEAN CANVASは1ページで作るビジネスモデルの設計図です。<br>
+      項目に沿って作成することでビジネスモデルの有効性と検証することができます。<br>
+      またビジネスモデルの転換や移行のきっかけとしても有用です。
+    </p>
+    <div class='p-top-content__caption'>
+      <img class='u-width--full' src='./assets/lcp.png'>
+    </div>
+    <div class='p-top-content__btn'>
+      <%= link_to 'Try Playground', playground_lean_canvas_path, { :class => 'c-btn--primary c-btn--large'} %>
+    </div>
+  </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.0/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.0/pixi.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/PixiPlugin.min.js"></script>
+<script>
+/**
+ * header
+ */
+var $header = $('#js-header');
 
+$(window).on('load scroll', function(e) {
+  var scrollTop = $(this).scrollTop();
+  if (60 < scrollTop) {
+    $header.removeClass('is-top');
+  } else {
+    $header.addClass('is-top');
+  }
+});
+
+/**
+ * particle
+ */
+
+var popCounter = 0;
+
+var $windowWidth = $(window).width();
+var $windowHeight = 696;
+
+PIXI.utils.skipHello(); // remove pixi message in console log 
+
+var app = new PIXI.Application($windowWidth, $windowHeight, {
+  transparent: true, 
+  resolution: 1
+  }
+);
+
+$('#js-particle').append(app.view);
+
+var particleCount = 56;
+var particleColors = ['26a3ff', '13ce66', 'ff49db', 'af8dd1', '9162bf', 'ff7849', 'ffc82c']
+var particleSettings;
+
+for (var i = 0; i < particleCount; i++) {
+  particleSettings = {
+    particleSize: 10,
+    x: Math.floor(Math.random() * app.renderer.width),
+    y: Math.floor(Math.random() * app.renderer.height / 4 * 3),
+    scale: Math.floor(Math.random() * 3) / 3,
+    alpha: 0.15,
+    particleSpeed: Math.floor(Math.min(200, Math.random() * 1000)),
+    color: particleColors[Math.floor(Math.random() * particleColors.length)]
+  }
+  createParticle(particleSettings);
+}
+
+function createParticle() {
+
+  // GRAPHIC
+  var graphic = new PIXI.Graphics(); // create graphic
+  graphic.beginFill('0x'+particleSettings.color);
+  graphic.drawCircle(0, 0, particleSettings.particleSize); // (x, y, radius) // gets scaled as a sprite later
+  graphic.endFill();
+
+  // TEXTURE
+  var texture = graphic.generateCanvasTexture(); // create texture using graphic (scaleMode, resolution)
+  texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST; // scale mode for pixelation
+
+  // SPRITE
+  var particleSprite = new PIXI.Sprite(texture);  // create particle using texture
+  particleSprite.interactive = true;					  // center anchor point
+  particleSprite.blendMode = PIXI.BLEND_MODES.SCREEN;
+
+  // SET POSITIONING
+  TweenMax.set(particleSprite, {
+    pixi: {
+      x: particleSettings.x,
+      y: particleSettings.y,
+      scale: particleSettings.scale,
+      alpha: particleSettings.alpha
+    }
+  }, 1);
+
+  TweenMax.to(particleSprite, particleSettings.particleSpeed, {
+    pixi: {
+      x: Math.floor(Math.random() * app.renderer.width),
+      y: Math.floor(Math.random() * app.renderer.height)
+    }, 
+    ease: Power4.easeOut
+  }, 10);
+
+  // ADD SPRITE TO STAGE
+  app.stage.addChild(particleSprite);
+}
+  
+</script>
