@@ -1,0 +1,19 @@
+.c-signboard {
+  font-family: 'Quicksand', sans-serif;
+  line-height: 50px;
+  color: #369EFB;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    transform: rotate(45deg);
+    border-radius: 10px;
+    z-index: 1;
+    border: 1px solid #369EFB;
+    left: -12px;
+    top: -11px;
+  }
+}

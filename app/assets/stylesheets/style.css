@@ -784,6 +784,23 @@ input[type="checkbox"] {
     padding-bottom: 5px;
     padding-left: 20px; }
 
+.c-signboard {
+  font-family: 'Quicksand', sans-serif;
+  line-height: 50px;
+  color: #369EFB; }
+  .c-signboard:before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    transform: rotate(45deg);
+    border-radius: 10px;
+    z-index: 1;
+    border: 1px solid #369EFB;
+    left: -12px;
+    top: -11px; }
+
 .p-copyright {
   width: 100%;
   text-align: center;
@@ -958,6 +975,9 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: row;
   justify-content: space-between; }
+
+.u-position--relative {
+  position: relative; }
 
 .u-text--center {
   text-align: center; }

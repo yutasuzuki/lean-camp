@@ -21,38 +21,41 @@
       </div>
     </div>
   </div>
-  <div class='p-top-content'>
-    <div class='p-top-content__heading'>
-      <h2 class='c-heading--border'>
-        LEAN CANVAS
-      </h2>
+  <div id='js-service' class='u-position--relative'>
+    <div id='js-signboard-service' class='c-signboard'>service</div>
+    <div class='p-top-content'>
+      <div class='p-top-content__heading'>
+        <h2 class='c-heading--border'>
+          LEAN CANVAS
+        </h2>
+      </div>
+      <p class='p-top-content__description'>
+        LEAN CANVASは1ページで作るビジネスモデルの設計図です。<br>
+        項目に沿って作成することでビジネスモデルの有効性と検証することができます。<br>
+        またビジネスモデルの転換や移行のきっかけとしても有用です。
+      </p>
+      <div class='p-top-content__caption'>
+        <img class='u-width--full' src='./assets/lcp.png'>
+      </div>
+      <div class='p-top-content__btn'>
+        <%= link_to 'Try Playground', playground_lean_canvas_path, { :class => 'c-btn--primary c-btn--large'} %>
+      </div>
     </div>
-    <p class='p-top-content__description'>
-      LEAN CANVASは1ページで作るビジネスモデルの設計図です。<br>
-      項目に沿って作成することでビジネスモデルの有効性と検証することができます。<br>
-      またビジネスモデルの転換や移行のきっかけとしても有用です。
-    </p>
-    <div class='p-top-content__caption'>
-      <img class='u-width--full' src='./assets/lcp.png'>
-    </div>
-    <div class='p-top-content__btn'>
-      <%= link_to 'Try Playground', playground_lean_canvas_path, { :class => 'c-btn--primary c-btn--large'} %>
-    </div>
-  </div>
-  <div class='p-top-content'>
-    <div class='p-top-content__heading'>
-      <h2 class='c-heading--border'>OKR</h2>
-    </div>
-    <p class='p-top-content__description'>
-      LEAN CANVASは1ページで作るビジネスモデルの設計図です。<br>
-      項目に沿って作成することでビジネスモデルの有効性と検証することができます。<br>
-      またビジネスモデルの転換や移行のきっかけとしても有用です。
-    </p>
-    <div class='p-top-content__caption'>
-      <img class='u-width--full' src='./assets/lcp.png'>
-    </div>
-    <div class='p-top-content__btn'>
-      <%= link_to 'Try Playground', playground_lean_canvas_path, { :class => 'c-btn--primary c-btn--large'} %>
+    <div class='p-top-content'>
+      <div class='p-top-content__heading'>
+        <h2 class='c-heading--border'>OKR</h2>
+      </div>
+      <p class='p-top-content__description'>
+        LEAN CANVASは1ページで作るビジネスモデルの設計図です。<br>
+        項目に沿って作成することでビジネスモデルの有効性と検証することができます。<br>
+        またビジネスモデルの転換や移行のきっかけとしても有用です。
+      </p>
+      <div class='p-top-content__caption'>
+        <img class='u-width--full' src='./assets/lcp.png'>
+      </div>
+      <div class='p-top-content__btn'>
+        <%= link_to 'Try Playground', playground_lean_canvas_path, { :class => 'c-btn--primary c-btn--large'} %>
+      </div>
     </div>
   </div>
 </main>
@@ -72,6 +75,22 @@ $(window).on('load scroll', function(e) {
     $header.removeClass('is-top');
   } else {
     $header.addClass('is-top');
+  }
+});
+/**
+ * service
+ */
+var $service = $('#js-service');
+var $signboardService = $('#js-signboard-service');
+
+$(window).on('load scroll', function(e) {
+  var scrollTop = $(this).scrollTop();
+  if (scrollTop < $service.offset().top) {
+    $signboardService.addClass('a').removeClass('b c');
+  } else if ($service.offset().top < scrollTop && scrollTop < $service.offset().top + $service.height()) {
+    $signboardService.addClass('b').removeClass('a c');
+  } else {
+    $signboardService.addClass('c').removeClass('a b');
   }
 });
 
