@@ -22,7 +22,9 @@
     </div>
   </div>
   <div id='js-service' class='u-position--relative'>
-    <div id='js-signboard-service' class='c-signboard'>service</div>
+    <div id='js-signboard-service' class='c-signboard-container'>
+      <div class='c-signboard'>service</div>
+    </div>
     <div class='p-top-content'>
       <div class='p-top-content__heading'>
         <h2 class='c-heading--border'>
@@ -86,11 +88,11 @@ var $signboardService = $('#js-signboard-service');
 $(window).on('load scroll', function(e) {
   var scrollTop = $(this).scrollTop();
   if (scrollTop < $service.offset().top) {
-    $signboardService.addClass('a').removeClass('b c');
+    $signboardService.addClass('is-static').removeClass('is-fixed is-absolute');
   } else if ($service.offset().top < scrollTop && scrollTop < $service.offset().top + $service.height()) {
-    $signboardService.addClass('b').removeClass('a c');
+    $signboardService.addClass('is-fixed').removeClass('is-static is-absolute');
   } else {
-    $signboardService.addClass('c').removeClass('a b');
+    $signboardService.addClass('is-absolute').removeClass('is-static is-fixed');
   }
 });
 

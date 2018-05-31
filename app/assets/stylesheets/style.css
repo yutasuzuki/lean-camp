@@ -785,21 +785,38 @@ input[type="checkbox"] {
     padding-left: 20px; }
 
 .c-signboard {
+  position: relative;
   font-family: 'Quicksand', sans-serif;
   line-height: 50px;
-  color: #369EFB; }
-  .c-signboard:before {
+  font-weight: bold;
+  z-index: 1; }
+  .c-signboard:after {
     content: '';
-    display: block;
     position: absolute;
-    height: 70px;
-    width: 70px;
+    display: block;
+    height: 80px;
+    width: 80px;
     transform: rotate(45deg);
     border-radius: 10px;
-    z-index: 1;
-    border: 1px solid #369EFB;
-    left: -12px;
-    top: -11px; }
+    border: 2px solid #369efB;
+    background-color: #369efB;
+    left: -10px;
+    top: -10px; }
+
+.c-signboard-container.is-static {
+  position: absolute;
+  top: 108px;
+  left: 124px; }
+
+.c-signboard-container.is-fixed {
+  position: fixed;
+  top: 108px;
+  left: 124px; }
+
+.c-signboard-container.is-absolute {
+  position: absolute;
+  bottom: 0;
+  left: 124px; }
 
 .p-copyright {
   width: 100%;
