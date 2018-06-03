@@ -876,6 +876,13 @@ input[type="checkbox"] {
     .p-header__logo-anchor:hover, .p-header__logo-anchor:active {
       color: #273444;
       text-decoration: none; }
+  .p-header__logo-svg {
+    position: relative;
+    top: -2px;
+    width: 26px;
+    margin-right: 8px; }
+    .p-header__logo-svg path {
+      fill: #273444; }
   .p-header__nav > * {
     display: inline-block;
     font-family: 'Raleway', sans-serif;
@@ -940,6 +947,7 @@ input[type="checkbox"] {
     flex: 5;
     padding-left: 60px; }
   .p-mainvisual__text {
+    text-shadow: 0 0 4px #fff;
     color: #4e5067; }
   .p-mainvisual__signup {
     text-align: center;
@@ -950,7 +958,8 @@ input[type="checkbox"] {
     margin: -15px 0 10px;
     padding: 5px 0;
     color: #273444;
-    font-weight: lighter; }
+    font-weight: lighter;
+    text-shadow: 0 0 4px #fff; }
     .p-mainvisual__heading--top:before {
       content: '"';
       position: relative;
@@ -974,7 +983,8 @@ input[type="checkbox"] {
     margin-bottom: 48px; }
   .p-top-content__description {
     text-align: center;
-    margin-bottom: 24px; }
+    margin-bottom: 24px;
+    text-shadow: 0 0 4px #fff; }
   .p-top-content__caption {
     width: 600px;
     margin: 0 auto;

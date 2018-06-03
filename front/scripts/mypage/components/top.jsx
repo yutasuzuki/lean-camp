@@ -1,6 +1,54 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+class LeanCanvas extends Component {
+  constructor(props) {
+    super(props);
+    axios.get('/api/user').then(({ data }) => {
+      this.props.onGetMe(data);
+    });
+    axios.get('/api/lean_canvas').then(({ data }) => {
+      this.props.onGetLeanCanvasList(data);
+    });
+  }
+
+  render() {
+    return (
+      <Content>
+        <Profile>
+          <Info>
+            <Name>{this.props.user.username}</Name>
+            <Description>I’m web developer!! I like Web frontend technologies and Design thinking</Description>
+            <BtnGhost to='/lean_canvas'>Edit</BtnGhost>
+          </Info>
+          <ThumbnailContainer>
+            <Thumbnail src='/assets/dammy.jpg' />
+          </ThumbnailContainer>
+        </Profile>
+        <UserItem>
+          <Nav>
+            <NavItem>Lean Canvas</NavItem>
+          </Nav>
+          <List>
+            {this.props.leanCanvas.list.map((value, index) => (
+              <ListItem value={value} key={index} />
+            ))}
+          </List>
+        </UserItem>
+      </Content>
+    )
+  }
+}
+
+let ListItem = (props) => {
+  return (
+    <ListItemAnchor to={`/lean_canvas/${props.value.id}`}>
+      <ListItemTitle>{props.value.service_name}</ListItemTitle>
+    </ListItemAnchor>
+  )
+}
 
 const Content = styled.div`
   width: 640px;
@@ -58,29 +106,49 @@ const BtnGhost = styled(Link) `
   }
 `
 
+const UserItem = styled.div`
+  width: 100%;
+  margin-top: 48px;
+`
 
-class LeanCanvas extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Nav = styled.ul`
+  display: block;
+  margin: 0 0 24px;
+  padding: 0;
+  border-bottom: 1px solid #d8dbde;
+`
+const NavItem = styled.li`
+  display: inline-block;
+  padding: 8px 0;
+  margin: 0 24px -1px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #4e5067;
+`
 
-  render() {
-    return (
-      <Content>
-        <Profile>
-          <Info>
-            <Name>yuta suzuki</Name>
-            <Description>I’m web developer!! I like Web frontend technologies and Design thinking</Description>
-            <BtnGhost to='/lean_canvas'>edit</BtnGhost>
-          </Info>
-          <ThumbnailContainer>
-            <Thumbnail src='/assets/dammy.jpg' />
-          </ThumbnailContainer>
-        </Profile>
+const List = styled.ul`
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #d8dbde;
+`
 
-      </Content>
-    )
-  }
-}
+ListItem = styled(ListItem)`
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #d8dbde;
+`
+const ListItemAnchor = styled(Link) `
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 24px 16px;
+  text-decoration: none;
+`
+const ListItemTitle = styled.div`
+  font-size: 20px;
+  color: #212121;
+`
 
 export default LeanCanvas

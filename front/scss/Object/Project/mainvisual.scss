@@ -26,6 +26,7 @@
   }
 
   &__text {
+    text-shadow: 0 0 4px #fff;
     color: $text-color-dafault;
   }
 
@@ -42,6 +43,7 @@
       padding: 5px 0;
       color: #273444;
       font-weight: lighter;
+      text-shadow: 0 0 4px #fff;
   
       &:before {
         content: '"';

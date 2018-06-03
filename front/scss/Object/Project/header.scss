@@ -28,6 +28,17 @@
     }
   }
 
+  &__logo-svg {
+    position: relative;
+    top: -2px;
+    width: 26px;
+    margin-right: 8px;
+
+    path {
+      fill: #273444
+    }   
+  }
+
   &__nav {
     & > * {
       display: inline-block;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import component from '../components/lean-canvas'
+import component from '../components/LeanCanvas'
 
 const mapStateToProps = (state) => {
   return state
