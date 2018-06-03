@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import axios from 'axios';
 import TextareaAutoHeight from './TextareaAutoHeight';
@@ -34,7 +36,6 @@ class LeanCanvas extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.match.params.id)
     if (this.props.match.params.id) {
       axios.get(`/api/lean_canvas/${this.props.match.params.id}`).then(({ data }) => {
         const state = Object.assign({}, data, { loaded: true });
@@ -55,11 +56,16 @@ class LeanCanvas extends Component {
   }
 
   onSave() {
-    console.log(this.state)
     axios.post('/api/lean_canvas', this.state).then(({ data }) => {
-      console.log(data)
       const state = Object.assign({}, data, { loaded: true });
       this.setState(state);
+      toast.success('保存しました', {
+        position: 'top-right',
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
     });
   }
 
@@ -217,13 +223,18 @@ class LeanCanvas extends Component {
         <div>
           <a onClick={this.onSave.bind(this)} className='c-btn--primary'>保 存</a>
         </div>
+        <Toast />
       </Main>
     )
   }
 }
 
 const Main = styled.main`
-  margin: 80px 3vw 100px;
+  margin: 120px 3vw 152px;
+`
+
+const Toast = styled(ToastContainer)`
+  color: #fff;
 `
 
 export default LeanCanvas

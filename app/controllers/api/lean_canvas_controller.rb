@@ -16,6 +16,7 @@ class Api::LeanCanvasController < ApplicationController
     lean_canvas = LeanCanva.find_or_initialize_by(id: params[:id])
     lean_canvas.user_id = current_user.id
     lean_canvas.update_attributes(lean_canvas_params)
+    render json: params
   end
 
   def update
