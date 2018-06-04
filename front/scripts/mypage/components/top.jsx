@@ -30,10 +30,12 @@ class LeanCanvas extends Component {
         <UserItem>
           <Nav>
             <NavItem>Lean Canvas</NavItem>
+            <NavItem>OKR</NavItem>
+            <NavItem>MBO</NavItem>
           </Nav>
           <List>
             {this.props.leanCanvas.list.map((value, index) => (
-              <ListItem value={value} key={index} />
+              <LeanCanvasItem value={value} key={index} />
             ))}
           </List>
         </UserItem>
@@ -42,11 +44,13 @@ class LeanCanvas extends Component {
   }
 }
 
-let ListItem = (props) => {
+let LeanCanvasItem = (props) => {
   return (
-    <ListItemAnchor to={`/lean_canvas/${props.value.id}`}>
-      <ListItemTitle>{props.value.service_name}</ListItemTitle>
-    </ListItemAnchor>
+    <ListItem>
+      <ListItemAnchor to={`/lean_canvas/${props.value.id}`}>
+        <ListItemTitle>{props.value.service_name}</ListItemTitle>
+      </ListItemAnchor>
+    </ListItem>
   )
 }
 
@@ -132,11 +136,15 @@ const List = styled.ul`
   border: 1px solid #d8dbde;
 `
 
-ListItem = styled(ListItem)`
+const ListItem = styled.li`
   display: block;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid #d8dbde;
+
+  &:last-child {
+    border-bottom: 0;
+  }
 `
 const ListItemAnchor = styled(Link) `
   display: block;

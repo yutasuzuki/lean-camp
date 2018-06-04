@@ -52,4 +52,10 @@ module.exports = {
     ],
     extensions: ['json', '.tsx', '.ts', '.jsx', '.js'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    // new webpack.optimize.UglifyJsPlugin()
+  ]
 };

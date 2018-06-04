@@ -234,7 +234,7 @@ const Main = styled.main`
 `
 
 const Toast = styled(ToastContainer)`
-  color: #fff;
+  color: #fff !important;
 `
 
 export default LeanCanvas
