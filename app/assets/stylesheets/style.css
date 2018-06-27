@@ -703,6 +703,22 @@ input[type="checkbox"] {
     height: 4px;
     background-color: #273444; }
 
+.c-input-add .c-input-add-inner {
+  width: 0;
+  border-bottom: 1px #ccc solid;
+  overflow: hidden;
+  transition: .2s ease-in width; }
+
+.c-input-add__btn:before {
+  content: '+';
+  color: #000; }
+
+.is-open.c-input-add .c-input-add-inner {
+  width: 100%; }
+
+.is-open.c-input-add__btn:before {
+  content: 'ボタン'; }
+
 .c-lean-canvas {
   display: grid;
   grid-template-rows: max-content;

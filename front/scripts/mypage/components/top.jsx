@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-class LeanCanvas extends Component {
+class Top extends Component {
   constructor(props) {
     super(props);
     axios.get('/api/user').then(({ data }) => {
@@ -15,6 +15,13 @@ class LeanCanvas extends Component {
   }
 
   render() {
+    if (!this.props.user.companies) {
+      return <div>hoge</div>
+    }
+    const a = this.props.user.companies.map(company => {
+       return <div>{company.name}</div>
+    })
+    console.log(a)
     return (
       <Content>
         <Profile>
@@ -27,6 +34,7 @@ class LeanCanvas extends Component {
             <Thumbnail src='/assets/dammy.jpg' />
           </ThumbnailContainer>
         </Profile>
+        {a.map(company => <div>{ company }</div>) }
         <UserItem>
           <Nav>
             <NavItem>Lean Canvas</NavItem>
@@ -159,4 +167,4 @@ const ListItemTitle = styled.div`
   color: #212121;
 `
 
-export default LeanCanvas
+export default Top

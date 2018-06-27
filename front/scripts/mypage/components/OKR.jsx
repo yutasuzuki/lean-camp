@@ -30,6 +30,7 @@ class OKR extends Component {
       revenue: '',
       service_name: '',
       loaded: false,
+      open: false,
     }
   }
 
@@ -42,6 +43,10 @@ class OKR extends Component {
     } else {
       this.setState({ loaded: true });
     }
+  }
+
+  onHoge() {
+    this.setState({ open: true });
   }
 
   onChangeHandler(e) {
@@ -89,9 +94,7 @@ class OKR extends Component {
         </div>
         <div className='c-okr'>
           <div className='c-okr__cell c-okr__cell--priority'>
-            <h3 className='c-lean-canvas__title'>なぜお客様は喜んでくれる？</h3>
-            <p className='c-lean-canvas__subtitle'>課題</p>
-            <p className='c-lean-canvas__subtitle'>PROBLEM</p>
+            <h3 className='c-lean-canvas__title'>今週</h3>
             <Textarea 
               name='problem' 
               changeTextarea={this.onChangeHandler.bind(this)} 
@@ -102,24 +105,22 @@ class OKR extends Component {
           <div className='c-okr__cell c-okr__cell--goal'>
             <h3 className='c-lean-canvas__title'>OKR</h3>
             <p className='c-lean-canvas__subtitle'>Object</p>
-            <Textarea 
-              name='existing' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.existing} 
-              className='c-lean-canvas__textarea' 
-            />
+
+            <div className={[
+              'c-input-add',
+              this.state.open ? 'is-open' : ''
+            ].join(' ')}>
+              <div className='c-input-add-inner'>
+                <input />
+              </div>
+              <div onClick={this.onHoge.bind(this)} className='c-input-add__btn'></div>
+            </div>
+
             <p className='c-lean-canvas__subtitle'>Key Result</p>
-            <Textarea 
-              name='existing' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.existing} 
-              className='c-lean-canvas__textarea' 
-            />
+            <input />
           </div>
           <div className='c-okr__cell c-okr__cell--next'>
-            <h3 className='c-lean-canvas__title'>具体的に何を提供する？</h3>
-            <p className='c-lean-canvas__subtitle'>ソリューション</p>
-            <p className='c-lean-canvas__subtitle'>SOLUTION</p>
+            <h3 className='c-lean-canvas__title'>今後４週間 - プロジェクト</h3>
             <Textarea 
               name='solution' 
               changeTextarea={this.onChangeHandler.bind(this)} 
@@ -128,9 +129,7 @@ class OKR extends Component {
             />
           </div>
           <div className='c-okr__cell c-okr__cell--Soundness'>
-            <h3 className='c-lean-canvas__title'>喜んだことをどうやって知る？</h3>
-            <p className='c-lean-canvas__subtitle'>主要指標</p>
-            <p className='c-lean-canvas__subtitle'>KEY METRICS</p>
+            <h3 className='c-lean-canvas__title'>健康状態・健全性</h3>
             <Textarea 
               name='key_metrics' 
               changeTextarea={this.onChangeHandler.bind(this)} 

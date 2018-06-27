@@ -1,0 +1,30 @@
+.c-input-add {
+  .c-input-add-inner {
+    width: 0;
+    border-bottom: 1px #ccc solid;
+    overflow: hidden;
+    transition: .2s ease-in width;
+  }
+
+  &__btn {
+    &:before {
+      content: '+';
+      color: #000;
+    }
+  }
+}
+
+.is-open {
+  &.c-input-add {
+    .c-input-add-inner {
+      width: 100%;
+    }
+  
+    &__btn {
+
+      &:before {
+        content: 'ボタン';
+      }
+    }
+  }
+}
