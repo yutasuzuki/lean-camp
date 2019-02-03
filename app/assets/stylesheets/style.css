@@ -792,7 +792,8 @@ input[type="checkbox"] {
   .c-lean-canvas-title__text {
     width: 100px;
     padding-left: 10px;
-    padding-bottom: 5px; }
+    padding-bottom: 5px;
+    font-weight: bold; }
   .c-lean-canvas-title__input {
     outline: 0;
     border: 0;

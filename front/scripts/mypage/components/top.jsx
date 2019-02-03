@@ -16,7 +16,6 @@ class Top extends Component {
   }
 
   async onDeleteItem(item) {
-    console.log(item);
     await axios.delete(`/api/lean_canvas/${item.id}`);
     axios.get('/api/lean_canvas').then(({ data }) => {
       this.props.onGetLeanCanvasList(data);
@@ -127,7 +126,8 @@ const MenuItem = styled.li`
 `;
 
 const MenuItemAnchor = styled.a`
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   font-size: 14px;
   letter-spacing: .1em;
 `;
@@ -163,11 +163,12 @@ const BtnGhost = styled(Link) `
   position: absolute;
   top: 0;
   right: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Raleway', sans-serif;
   display: inline-block;
   color: #369efb;
   text-align: center;
   text-decoration: none;
+  font-weight: bold;
   padding: 4px 20px;
   border: 1px #369efb solid;
   border-radius: 4px;
@@ -182,9 +183,10 @@ const BtnGhost = styled(Link) `
 `
 
 const BtnFill = styled(Link) `
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Raleway', sans-serif;
   display: inline-block;
   color: #fff;
+  font-weight: bold;
   text-align: center;
   text-decoration: none;
   padding: 4px 20px;

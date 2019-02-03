@@ -225,7 +225,7 @@ class LeanCanvas extends Component {
           <a onClick={this.props.history.goBack.bind(this)}>
             <FooterStickyBack />
           </a>
-          <BtnSave onClick={this.onSave.bind(this)} className='c-btn--primary'>SAVE</BtnSave>
+          <BtnSave onClick={this.onSave.bind(this)}>Save</BtnSave>
         </FooterSticky>
         <Toast />
       </Main>
@@ -248,7 +248,7 @@ const FooterSticky = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, .5);
-  padding: 24px 3vw;
+  padding: 16px 3vw;
 `
 
 const FooterStickyBack = styled(IoIosArrowBack)`
@@ -263,17 +263,17 @@ const FooterStickyBack = styled(IoIosArrowBack)`
 `;
 
 const BtnSave = styled.a`
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Raleway', sans-serif;
   display: inline-block;
   color: #fff;
+  background-color: #369efb;
   text-align: center;
   text-decoration: none;
   padding: 8px 32px;
   border-width: 1px;
   border-style: solid;
-  border-color: rgb(54, 158, 251);
-  border-image: initial;
-  border-radius: 8px;
+  border-color: #369efb;
+  border-radius: 4px;
   font-weight: bold;
   font-size: 20px;
   transition: all 0.1s ease-in 0s;
