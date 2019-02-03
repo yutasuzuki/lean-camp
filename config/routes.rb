@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  namespace :api, {format: 'json'} do
-    resources :lean_canvas, :only => [:index, :create, :show, :update]
+  namespace :api, { format: 'json' } do
+    resources :company, :only => [:index]
+    resources :lean_canvas, :only => [:index, :create, :show, :update, :destroy]
     resources :user, :only => [:index, :update]
   end
 

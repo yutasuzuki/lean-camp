@@ -17,10 +17,8 @@ class TextareaAutoHeight extends Component {
   }
 
   textAutoHeightHandler() {
-    this.style.height = `142px`;
-    // 1行の長さを取得する
+    this.style.height = '142px';
     const lineHeight = parseInt(this.style.lineHeight.replace(/px/, ''));
-    // 最低2行の表示エリアにする
     const doubleLineHeight = lineHeight * 2;
     let scrollHeight = parseInt(this.scrollHeight);
     if(scrollHeight < doubleLineHeight){
@@ -37,7 +35,7 @@ class TextareaAutoHeight extends Component {
         className={this.props.className} 
         onChange={this.props.changeTextarea.bind(this)}
         defaultValue={this.state.text}
-      ></textarea>
+      />
     )
   }
 }

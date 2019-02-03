@@ -78,7 +78,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("document.querySelectorAll('.js-texarea').forEach((textarea) => {\n  textarea.addEventListener('change', textAutoHeightHandler);\n  textarea.addEventListener('input', textAutoHeightHandler);\n  textAutoHeightHandler.call(textarea);\n});\n\nfunction textAutoHeightHandler() {\n  this.style.height = `142px`;\n  // 1行の長さを取得する\n  const lineHeight = parseInt(this.style.lineHeight.replace(/px/, ''));\n  // 最低2行の表示エリアにする\n  const doubleLineHeight = lineHeight * 2;\n  let scrollHeight = parseInt(this.scrollHeight);\n  if(scrollHeight < doubleLineHeight){\n    scrollHeight = doubleLineHeight;\n  }\n  this.style.height = scrollHeight + 'px';\n}\n \n\n//# sourceURL=webpack:///./front/scripts/index.js?");
+eval("document.querySelectorAll('.js-texarea').forEach((textarea) => {\n  textarea.addEventListener('change', textAutoHeightHandler);\n  textarea.addEventListener('input', textAutoHeightHandler);\n  textAutoHeightHandler.call(textarea);\n});\n\nfunction textAutoHeightHandler() {\n  this.style.height = '142px';\n  // 1行の長さを取得する\n  const lineHeight = parseInt(this.style.lineHeight.replace(/px/, ''));\n  // 最低2行の表示エリアにする\n  const doubleLineHeight = lineHeight * 2;\n  let scrollHeight = parseInt(this.scrollHeight);\n  if (scrollHeight < doubleLineHeight) {\n    scrollHeight = doubleLineHeight;\n  }\n  this.style.height = `${scrollHeight}px`;\n}\n\n\n//# sourceURL=webpack:///./front/scripts/index.js?");
 
 /***/ })
 

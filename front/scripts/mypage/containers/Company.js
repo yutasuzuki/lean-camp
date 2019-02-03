@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import component from '../components/OKR';
+import component from '../components/Company';
 
 const mapStateToProps = state => state;
 

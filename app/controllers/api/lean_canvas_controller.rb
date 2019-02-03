@@ -3,7 +3,7 @@ class Api::LeanCanvasController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index 
-    @lean_canvas = LeanCanva.where(user_id: current_user.id)
+    @lean_canvas = LeanCanva.where(user_id: current_user.id, deleted_at: nil).order('updated_at DESC')
     render json: @lean_canvas
   end
 
@@ -22,6 +22,12 @@ class Api::LeanCanvasController < ApplicationController
   def update
     puts 'update'
     puts params
+  end
+
+  def destroy
+    lean_canvas = LeanCanva.find(params[:id])
+    lean_canvas.update_attributes(deleted_at: Time.now)
+    render json: params
   end
 
   private

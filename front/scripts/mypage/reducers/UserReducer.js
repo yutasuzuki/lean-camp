@@ -1,4 +1,4 @@
-import { GET_ME } from '../actions/user'
+import { GET_ME } from '../actions/user';
 
 const UserReducer = (state = {}, action) => {
   switch (action.type) {
@@ -6,8 +6,8 @@ const UserReducer = (state = {}, action) => {
       return state = action.payload;
       break;
     default:
-      return state
+      return state;
   }
 };
 
-export default UserReducer
+export default UserReducer;

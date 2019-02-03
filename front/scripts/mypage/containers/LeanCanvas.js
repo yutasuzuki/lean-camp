@@ -1,18 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import component from '../components/LeanCanvas'
+import React from 'react';
+import { connect } from 'react-redux';
+import component from '../components/LeanCanvas';
 
-const mapStateToProps = (state) => {
-  return state
-}
+const mapStateToProps = state => state;
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
-}
+const mapDispatchToProps = dispatch => ({});
 
 const container = connect(
   mapStateToProps,
-  mapDispatchToProps
-)(component)
+  mapDispatchToProps,
+)(component);
 
-export default container
+export default container;

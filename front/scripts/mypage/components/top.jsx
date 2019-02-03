@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { IoIosMore } from 'react-icons/io';
 
 class Top extends Component {
   constructor(props) {
@@ -14,53 +15,134 @@ class Top extends Component {
     });
   }
 
+  async onDeleteItem(item) {
+    console.log(item);
+    await axios.delete(`/api/lean_canvas/${item.id}`);
+    axios.get('/api/lean_canvas').then(({ data }) => {
+      this.props.onGetLeanCanvasList(data);
+    });
+  }
+
   render() {
     if (!this.props.user.companies) {
-      return <div>hoge</div>
+      return <div>Loading</div>
     }
-    const a = this.props.user.companies.map(company => {
-       return <div>{company.name}</div>
+    const companies = this.props.user.companies.map(company => {
+       return <div><Link to={`/company/${company.id}`}>{company.name}</Link></div>
     })
-    console.log(a)
+
     return (
       <Content>
         <Profile>
-          <Info>
-            <Name>{this.props.user.username}</Name>
-            <Description>I’m web developer!! I like Web frontend technologies and Design thinking</Description>
-            <BtnGhost to='/lean_canvas'>Edit</BtnGhost>
-          </Info>
-          <ThumbnailContainer>
-            <Thumbnail src='/assets/dammy.jpg' />
-          </ThumbnailContainer>
+          <Name>{this.props.user.username}</Name>
+          <BtnGhost to='/lean_canvas'>Edit</BtnGhost>
         </Profile>
-        {a.map(company => <div>{ company }</div>) }
+        {/* { companies.map(company => company ) } */}
         <UserItem>
           <Nav>
             <NavItem>Lean Canvas</NavItem>
             <NavItem>OKR</NavItem>
             <NavItem>MBO</NavItem>
           </Nav>
-          <List>
-            {this.props.leanCanvas.list.map((value, index) => (
-              <LeanCanvasItem value={value} key={index} />
-            ))}
-          </List>
+          <div>
+            <ListTools>
+              <BtnFill to='/lean_canvas'>Create</BtnFill>
+            </ListTools>
+            <List>
+              {this.props.leanCanvas.list.map((value, index) => (
+                <Item type='lean_canvas' deleteItem={this.onDeleteItem.bind(this)} value={value} key={index} />
+              ))}
+            </List>
+          </div>
         </UserItem>
       </Content>
     )
   }
 }
 
-let LeanCanvasItem = (props) => {
-  return (
-    <ListItem>
-      <ListItemAnchor to={`/lean_canvas/${props.value.id}`}>
-        <ListItemTitle>{props.value.service_name}</ListItemTitle>
-      </ListItemAnchor>
-    </ListItem>
-  )
+class Item extends Component {
+  constructor(props) {
+    super(props);
+    this.state  = {
+      show: false,
+    }
+  }
+
+  onShowMenu(e) {
+    this.setState({show: !this.state.show});
+  }
+
+  onDelete() {
+    this.setState({show: false});
+    this.props.deleteItem({ type: this.props.type, id: this.props.value.id });
+  }
+
+  render() {
+    return (
+      <ListItem>
+        <ListItemAnchor to={`/lean_canvas/${this.props.value.id}`}>
+          <ListItemTitle>{this.props.value.service_name}</ListItemTitle>
+        </ListItemAnchor>
+        <ListItemMenu>
+          <IconMenu data-item={this.props.value.id} onClick={this.onShowMenu.bind(this)}/>
+          <Menu className={this.state.show ? 'is-show': ''}>
+            <MenuItem>
+              <MenuShare>Share</MenuShare>
+            </MenuItem>
+            <MenuItem>
+              <MenuDelete onClick={this.onDelete.bind(this)}>Delete</MenuDelete>
+            </MenuItem>
+          </Menu>
+        </ListItemMenu>
+      </ListItem>
+    )
+  }
 }
+
+const Menu = styled.ul`
+  display: none;
+  position: absolute;
+  top: 32px;
+  right: 16px;
+  background-color: #fff;
+  margin: 0;
+  padding: 16px 32px;
+  box-shadow: 0 0 6px -2px #000;
+  border-radius: 6px;
+  z-index: 1;
+
+  &.is-show {
+    display: block;
+  }
+`;
+
+const MenuItem = styled.li`
+  list-style: none;
+  padding: 4px 0;
+  margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const MenuItemAnchor = styled.a`
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  letter-spacing: .1em;
+`;
+
+const MenuDelete = styled(MenuItemAnchor)`
+  color: #f00;
+`
+
+const MenuShare = styled(MenuItemAnchor)`
+  /* color: #369efb;
+
+  &:hover {
+    background-color: #2a85d7;
+  } */
+`
 
 const Content = styled.div`
   width: 640px;
@@ -68,26 +150,7 @@ const Content = styled.div`
 `;
 
 const Profile = styled.div`
-  display: flex;
-`;
-
-const Info = styled.div`
-  display: block;
-  padding-right: 40px;
-`;
-
-const ThumbnailContainer = styled.div`
-  display: block;
-  width: 120px;
-  height: 120px;
-  border-radius: 60px;
-  overflow: hidden;
-  border: 2px #f6f6f6 solid;
-`;
-
-const Thumbnail = styled.img`
-  width: 100%;
-  object-fit: contain;
+  position: relative;
 `;
 
 const Name = styled.h1`
@@ -96,12 +159,11 @@ const Name = styled.h1`
   margin: 0 0 20px;
 `;
 
-const Description = styled.p`
-  font-size: 14px;
-  margin: 0 0 10px;
-`;
-
 const BtnGhost = styled(Link) `
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: 'Quicksand', sans-serif;
   display: inline-block;
   color: #369efb;
   text-align: center;
@@ -110,11 +172,31 @@ const BtnGhost = styled(Link) `
   border: 1px #369efb solid;
   border-radius: 4px;
   transition: .1s ease-in;
+  letter-spacing: .1em;
   cursor: pointer;
 
   &:hover {
     background-color: #369efb;
     color: #fff;
+  }
+`
+
+const BtnFill = styled(Link) `
+  font-family: 'Quicksand', sans-serif;
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 4px 20px;
+  border: 1px #369efb solid;
+  border-radius: 4px;
+  background-color: #369efb;
+  transition: .1s ease-in;
+  letter-spacing: .1em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2a85d7;
   }
 `
 
@@ -125,8 +207,8 @@ const UserItem = styled.div`
 
 const Nav = styled.ul`
   display: block;
-  margin: 0 0 24px;
   padding: 0;
+  margin: 0;
   border-bottom: 1px solid #d8dbde;
 `
 const NavItem = styled.li`
@@ -137,34 +219,58 @@ const NavItem = styled.li`
   border-bottom: 1px solid #4e5067;
 `
 
+const ListTools = styled.div `
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 8px;
+`;
+
 const List = styled.ul`
   display: block;
   margin: 0;
   padding: 0;
-  border: 1px solid #d8dbde;
+  border-bottom: 1px solid #d8dbde;
 `
 
 const ListItem = styled.li`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid #d8dbde;
+
+  &:hover {
+    background-color: #fcfcfc;
+  }
 
   &:last-child {
     border-bottom: 0;
   }
 `
+
 const ListItemAnchor = styled(Link) `
   display: block;
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 24px 16px;
+  padding: 24px 16px 24px 8px;
   text-decoration: none;
 `
 const ListItemTitle = styled.div`
   font-size: 20px;
   color: #212121;
 `
+
+const ListItemMenu = styled.div`
+  position: relative;
+  padding: 0 16px;
+`
+
+const IconMenu = styled(IoIosMore) `
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+`;
 
 export default Top

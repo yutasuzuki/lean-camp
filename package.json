@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "style": "node-sass --importer node_modules/node-sass-globbing/index.js front/scss/style.scss app/assets/stylesheets/style.css",
-    "watch": "nodemon --ext scss --watch front --exec 'npm run style'"
+    "watch": "nodemon --ext scss --watch front --exec 'npm run style'",
+    "lint": "node_modules/eslint/bin/eslint.js front/scripts"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -14,9 +15,15 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
     "node-sass": "^4.9.0",
     "node-sass-globbing": "^0.0.23",
     "nodemon": "^1.17.4",
+    "prettier": "1.13.7",
     "redux-logger": "^3.0.6",
     "scss-loader": "^0.0.1",
     "style-loader": "^0.21.0",
@@ -28,6 +35,7 @@
     "axios": "^0.18.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-icons": "^3.3.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-toastify": "^4.0.1",

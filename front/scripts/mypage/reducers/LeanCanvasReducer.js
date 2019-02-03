@@ -1,4 +1,4 @@
-import { GET_LEAN_CANVAS_LIST, GET_LEAN_CANVAS } from '../actions/leanCanvas'
+import { GET_LEAN_CANVAS_LIST, GET_LEAN_CANVAS } from '../actions/leanCanvas';
 
 const LeanCanvasReducer = (state = { item: {}, list: [] }, action) => {
   switch (action.type) {
@@ -7,12 +7,12 @@ const LeanCanvasReducer = (state = { item: {}, list: [] }, action) => {
       break;
     case GET_LEAN_CANVAS_LIST:
       return Object.assign({}, state, {
-          list: [...action.payload]
+        list: [...action.payload],
       });
       break;
     default:
-      return state
+      return state;
   }
 };
 
-export default LeanCanvasReducer
+export default LeanCanvasReducer;

@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import axios from 'axios';
 import TextareaAutoHeight from './TextareaAutoHeight';
+import { IoIosArrowBack } from 'react-icons/io';
 
 const Textarea = styled(TextareaAutoHeight) `
   width: 100%;
@@ -220,9 +221,12 @@ class LeanCanvas extends Component {
             />
           </div>
         </div>
-        <div>
-          <a onClick={this.onSave.bind(this)} className='c-btn--primary'>保 存</a>
-        </div>
+        <FooterSticky>
+          <a onClick={this.props.history.goBack.bind(this)}>
+            <FooterStickyBack />
+          </a>
+          <BtnSave onClick={this.onSave.bind(this)} className='c-btn--primary'>SAVE</BtnSave>
+        </FooterSticky>
         <Toast />
       </Main>
     )
@@ -230,11 +234,55 @@ class LeanCanvas extends Component {
 }
 
 const Main = styled.main`
-  margin: 120px 3vw 152px;
+  margin: 80px 3vw 152px;
 `
-
 const Toast = styled(ToastContainer)`
   color: #fff !important;
 `
+const FooterSticky = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, .5);
+  padding: 24px 3vw;
+`
+
+const FooterStickyBack = styled(IoIosArrowBack)`
+  width: 50px;
+  height: 50px;
+  fill: #0db5ff;
+  cursor: pointer;
+
+  &:hover {
+    fill: #2a85d7;
+  }
+`;
+
+const BtnSave = styled.a`
+  font-family: 'Quicksand', sans-serif;
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 32px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(54, 158, 251);
+  border-image: initial;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.1s ease-in 0s;
+  letter-spacing: .25em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2a85d7;
+  }
+`;
 
 export default LeanCanvas

@@ -28,7 +28,6 @@
       <nav class='p-header__nav'>
         <% if user_signed_in? %>
           <%= link_to current_user.username, mypage_path, { :class => "class_1"} %>
-          <%= link_to 'プロフィール変更', edit_user_registration_path %>
           <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => 'p-header__signout' %>
         <% else %>
           <%= link_to 'playground', playground_lean_canvas_path, { :class => 'p-header__playground'} %>
