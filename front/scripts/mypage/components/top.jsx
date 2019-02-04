@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { IoIosMore } from 'react-icons/io';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
+
 
 class Top extends Component {
   constructor(props) {
@@ -13,6 +16,9 @@ class Top extends Component {
     axios.get('/api/lean_canvas').then(({ data }) => {
       this.props.onGetLeanCanvasList(data);
     });
+    this.state = {
+      tabs: []
+    };
   }
 
   async onDeleteItem(item) {
@@ -36,23 +42,35 @@ class Top extends Component {
           <Name>{this.props.user.username}</Name>
           <BtnGhost to='/lean_canvas'>Edit</BtnGhost>
         </Profile>
-        {/* { companies.map(company => company ) } */}
+        { companies.map(company => company ) }
         <UserItem>
-          <Nav>
-            <NavItem>Lean Canvas</NavItem>
-            <NavItem>OKR</NavItem>
-            <NavItem>MBO</NavItem>
-          </Nav>
-          <div>
-            <ListTools>
-              <BtnFill to='/lean_canvas'>Create</BtnFill>
-            </ListTools>
-            <List>
-              {this.props.leanCanvas.list.map((value, index) => (
-                <Item type='lean_canvas' deleteItem={this.onDeleteItem.bind(this)} value={value} key={index} />
-              ))}
-            </List>
-          </div>
+          <Tabs>
+            <Nav>
+              <NavItem>Lean Canvas</NavItem>
+              <NavItem>OKR</NavItem>
+              <NavItem>MBO</NavItem>
+            </Nav>
+            <TabPanel>
+              <ListTools>
+                <BtnFill to='/lean_canvas'>Create</BtnFill>
+              </ListTools>
+              <List>
+                {this.props.leanCanvas.list.map((value, index) => (
+                  <Item type='lean_canvas' deleteItem={this.onDeleteItem.bind(this)} value={value} key={index} />
+                ))}
+              </List>
+            </TabPanel>
+            <TabPanel>
+              <ListTools>
+                <BtnFill to='/okr'>Create</BtnFill>
+              </ListTools>
+            </TabPanel>
+            <TabPanel>
+              <ListTools>
+                <BtnFill to='/okr'>Create</BtnFill>
+              </ListTools>
+            </TabPanel>
+          </Tabs>
         </UserItem>
       </Content>
     )
@@ -71,7 +89,11 @@ class Item extends Component {
     this.setState({show: !this.state.show});
   }
 
-  onDelete() {
+  onClickShare() {
+    console.log('Share');
+  }
+
+  onClickDelete() {
     this.setState({show: false});
     this.props.deleteItem({ type: this.props.type, id: this.props.value.id });
   }
@@ -86,10 +108,10 @@ class Item extends Component {
           <IconMenu data-item={this.props.value.id} onClick={this.onShowMenu.bind(this)}/>
           <Menu className={this.state.show ? 'is-show': ''}>
             <MenuItem>
-              <MenuShare>Share</MenuShare>
+              <MenuShare onClick={this.onClickShare.bind(this)}>Share</MenuShare>
             </MenuItem>
             <MenuItem>
-              <MenuDelete onClick={this.onDelete.bind(this)}>Delete</MenuDelete>
+              <MenuDelete onClick={this.onClickDelete.bind(this)}>Delete</MenuDelete>
             </MenuItem>
           </Menu>
         </ListItemMenu>
@@ -130,10 +152,18 @@ const MenuItemAnchor = styled.a`
   font-weight: bold;
   font-size: 14px;
   letter-spacing: .1em;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
 `;
 
 const MenuDelete = styled(MenuItemAnchor)`
   color: #f00;
+
+  &:hover {
+    background-color: #f00;
+    color: #fff;
+  }
 `
 
 const MenuShare = styled(MenuItemAnchor)`
@@ -207,18 +237,23 @@ const UserItem = styled.div`
   margin-top: 48px;
 `
 
-const Nav = styled.ul`
+const Nav = styled(TabList)`
   display: block;
   padding: 0;
   margin: 0;
   border-bottom: 1px solid #d8dbde;
 `
-const NavItem = styled.li`
+const NavItem = styled(Tab)`
   display: inline-block;
   padding: 8px 0;
   margin: 0 24px -1px 0;
   font-size: 14px;
-  border-bottom: 1px solid #4e5067;
+  cursor: pointer;
+
+  &.react-tabs__tab--selected {
+    border-bottom: 1px solid #4e5067;
+    cursor: default;
+  }
 `
 
 const ListTools = styled.div `
