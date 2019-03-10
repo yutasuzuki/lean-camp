@@ -5,7 +5,7 @@ class Api::ProjectController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index 
-    @project = Project.where(user_id: current_user.id, deleted_at: nil).order('updated_at DESC')
+    @project = Project.where(user_id: current_user.id).order('updated_at DESC')
     render json: @project
   end
 
