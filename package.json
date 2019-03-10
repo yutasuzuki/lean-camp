@@ -2,6 +2,8 @@
   "name": "lean-canvas-prototype",
   "private": true,
   "scripts": {
+    "postinstall": "npm run production",
+    "production": "npm run script && npm run style",
     "script": "npx webpack -w",
     "style": "node-sass --importer node_modules/node-sass-globbing/index.js front/scss/style.scss app/assets/stylesheets/style.css",
     "watch": "nodemon --ext scss --watch front --exec 'npm run style'",
