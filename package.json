@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "postinstall": "npm run production",
-    "production": "npm run script && npm run style",
+    "production": "yarn && yarn run webpack --config ./webpack.config.js --mode production && npm run style",
     "script": "npx webpack -w",
     "style": "node-sass --importer node_modules/node-sass-globbing/index.js front/scss/style.scss app/assets/stylesheets/style.css",
     "watch": "nodemon --ext scss --watch front --exec 'npm run style'",
@@ -50,5 +50,8 @@
     "slate": "^0.33.6",
     "slate-react": "^0.12.6",
     "styled-components": "^3.3.0"
+  },
+  "engines": {
+    "yarn": "1.x"
   }
 }
