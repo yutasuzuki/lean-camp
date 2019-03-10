@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "postinstall": "npm install && npm run production",
-    "production": "npm run webpack --config ./webpack.config.js --mode production && npm run style",
+    "production": "npm run webpack  --config ./webpack.config.js --mode production && npm run style",
     "script": "npx webpack -w",
     "style": "node-sass --importer node_modules/node-sass-globbing/index.js front/scss/style.scss app/assets/stylesheets/style.css",
     "watch": "nodemon --ext scss --watch front --exec 'npm run style'",
