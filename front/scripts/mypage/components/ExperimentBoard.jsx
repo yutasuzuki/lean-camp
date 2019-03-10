@@ -251,6 +251,60 @@ class ExperimentBoard extends Component {
               className='c-experiment-board__textarea' 
             />
           </div>
+
+          <div className='c-experiment-board__cell c-experiment-board__cell--precondition'>
+            <Textarea 
+              name='channels' 
+              changeTextarea={this.onChangeHandler.bind(this)} 
+              text={this.state.channels} 
+              className='c-experiment-board__textarea' 
+            />
+          </div>
+          <div className='c-experiment-board__title c-experiment-board__title--precondition'>
+            <p className='c-experiment-board__subtitle'>precondition</p>
+          </div>
+          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-1'>
+            <Textarea 
+              name='channels' 
+              changeTextarea={this.onChangeHandler.bind(this)} 
+              text={this.state.channels} 
+              className='c-experiment-board__textarea' 
+            />
+          </div>
+          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-2'>
+            <Textarea 
+              name='channels' 
+              changeTextarea={this.onChangeHandler.bind(this)} 
+              text={this.state.channels} 
+              className='c-experiment-board__textarea' 
+            />
+          </div>
+          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-3'>
+            <Textarea 
+              name='channels' 
+              changeTextarea={this.onChangeHandler.bind(this)} 
+              text={this.state.channels} 
+              className='c-experiment-board__textarea' 
+            />
+          </div>
+          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-4'>
+            <Textarea 
+              name='channels' 
+              changeTextarea={this.onChangeHandler.bind(this)} 
+              text={this.state.channels} 
+              className='c-experiment-board__textarea' 
+            />
+          </div>
+          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-5'>
+            <Textarea 
+              name='channels' 
+              changeTextarea={this.onChangeHandler.bind(this)} 
+              text={this.state.channels} 
+              className='c-experiment-board__textarea' 
+            />
+          </div>
+
+
         </div>
 
         <Textarea 

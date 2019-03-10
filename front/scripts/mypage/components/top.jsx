@@ -251,7 +251,7 @@ const Name = styled.h1`
 const List = styled.ul`
   margin: 0;
   padding: 0;
-  border-top: 3px solid #fafafa;
+  border-top: 3px solid #f1f1f1;
 `;
 
 const ListItem = styled.li`
