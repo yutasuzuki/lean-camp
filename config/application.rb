@@ -29,5 +29,7 @@ module LeanCanvasPrototype
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.assets.initialize_on_precompile = false
   end
 end

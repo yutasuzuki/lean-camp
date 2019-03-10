@@ -23,7 +23,7 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+# /config/master.key
 
 # Ignore bundler gems.
 /vendor/bundle
@@ -35,4 +35,4 @@ doc/
 .project
 .DS_Store
 .idea
-.secret
+# .secret
