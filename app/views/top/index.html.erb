@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class='p-mainvisual__artwork'>
-        <img class='u-width--full' src='./assets/lean-canvas-image.png'>
+        <%= image_tag('lean-canvas-image.png', :class => 'u-width--full') %>
       </div>
     </div>
   </div>
@@ -134,19 +134,18 @@ for (var i = 0; i < particleCount; i++) {
 
 function createParticle() {
 
-  // GRAPHIC
-  var graphic = new PIXI.Graphics(); // create graphic
-  graphic.beginFill('0x'+particleSettings.color);
-  graphic.drawCircle(0, 0, particleSettings.particleSize); // (x, y, radius) // gets scaled as a sprite later
+  var graphic = new PIXI.Graphics();
+  graphic.beginFill('0x' + particleSettings.color);
+  graphic.drawCircle(0, 0, particleSettings.particleSize);
   graphic.endFill();
 
   // TEXTURE
-  var texture = graphic.generateCanvasTexture(); // create texture using graphic (scaleMode, resolution)
-  texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST; // scale mode for pixelation
+  var texture = graphic.generateCanvasTexture(); 
+  texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
   // SPRITE
-  var particleSprite = new PIXI.Sprite(texture);  // create particle using texture
-  particleSprite.interactive = true;					  // center anchor point
+  var particleSprite = new PIXI.Sprite(texture);
+  particleSprite.interactive = true;
   particleSprite.blendMode = PIXI.BLEND_MODES.SCREEN;
 
   // SET POSITIONING

@@ -6,7 +6,7 @@ import LeanCanvas from '../containers/LeanCanvas'
 import ExperimentBoard from '../containers/ExperimentBoard'
 
 //ページの中身用のコンポーネントを作成
-const topPage = () => <div><h1>Top Page</h1>ここがトップページです</div>
+const topPage = () => <div><h1>Dashboard</h1>ここがトップページです</div>
 const page3 = () => <div><h1>page3</h1>3枚目のページです</div>
 
 class ProjectComponent extends Component {
