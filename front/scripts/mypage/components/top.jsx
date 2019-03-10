@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import Modal from 'react-modal';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { IoIosMore } from 'react-icons/io';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-
+const ModalStyles = {
+  content : {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    boxShadow: '0 0 6px -2px #000',
+  }
+};
 
 class Top extends Component {
   constructor(props) {
@@ -13,12 +23,47 @@ class Top extends Component {
     axios.get('/api/user').then(({ data }) => {
       this.props.onGetMe(data);
     });
-    axios.get('/api/lean_canvas').then(({ data }) => {
-      this.props.onGetLeanCanvasList(data);
+    axios.get('/api/project').then(({ data }) => {
+      console.log(data)
+      this.props.onGetProjects(data);
     });
     this.state = {
-      tabs: []
+      tabs: [],
+      modal: false,
+      project: {
+        id: null,
+        name: '',
+      },
     };
+  }
+
+  openModal() {
+    this.setState({modal: true});
+  }
+
+  closeModal() {
+    this.setState({modal: false});
+  }
+
+  handleProjectTitle(e) {
+    this.setState({project: { 
+      id: null,
+      name: e.target.value
+    }});
+  }
+
+  async onCreateProject() {
+    const params = {
+      id: this.state.project.id,
+      name: this.state.project.name,
+    }
+    const response = await axios.post('/api/project/', params);
+    console.log(response);
+    axios.get('/api/project').then(({ data }) => {
+      console.log(data)
+      this.props.onGetProjects(data);
+    });
+    this.closeModal();
   }
 
   async onDeleteItem(item) {
@@ -40,38 +85,26 @@ class Top extends Component {
       <Content>
         <Profile>
           <Name>{this.props.user.username}</Name>
-          <BtnGhost to='/lean_canvas'>Edit</BtnGhost>
+          <BtnCreate onClick={this.openModal.bind(this)}>Create Project</BtnCreate>
         </Profile>
-        { companies.map(company => company ) }
-        <UserItem>
-          <Tabs>
-            <Nav>
-              <NavItem>Lean Canvas</NavItem>
-              <NavItem>OKR</NavItem>
-              <NavItem>MBO</NavItem>
-            </Nav>
-            <TabPanel>
-              <ListTools>
-                <BtnFill to='/lean_canvas'>Create</BtnFill>
-              </ListTools>
-              <List>
-                {this.props.leanCanvas.list.map((value, index) => (
-                  <Item type='lean_canvas' deleteItem={this.onDeleteItem.bind(this)} value={value} key={index} />
-                ))}
-              </List>
-            </TabPanel>
-            <TabPanel>
-              <ListTools>
-                <BtnFill to='/okr'>Create</BtnFill>
-              </ListTools>
-            </TabPanel>
-            <TabPanel>
-              <ListTools>
-                <BtnFill to='/okr'>Create</BtnFill>
-              </ListTools>
-            </TabPanel>
-          </Tabs>
-        </UserItem>
+        {/* { companies.map(company => company ) } */}
+
+        <List>
+          {this.props.projects.list.map((value, index) => (
+            <Item type='lean_canvas' deleteItem={this.onDeleteItem.bind(this)} value={value} key={index} />
+          ))}
+        </List>
+
+        <Modal
+          isOpen={this.state.modal}
+          onRequestClose={this.closeModal.bind(this)}
+          style={ModalStyles}
+          contentLabel="Example Modal">
+          <ModalInner>
+            <Input type='text' value={this.state.project.name} onChange={this.handleProjectTitle.bind(this)} placeholder='Awesome Project' />
+            <Btn type='text' onClick={ this.onCreateProject.bind(this) }>Create</Btn>
+          </ModalInner>
+        </Modal>
       </Content>
     )
   }
@@ -101,8 +134,8 @@ class Item extends Component {
   render() {
     return (
       <ListItem>
-        <ListItemAnchor to={`/lean_canvas/${this.props.value.id}`}>
-          <ListItemTitle>{this.props.value.service_name}</ListItemTitle>
+        <ListItemAnchor to={`/project/${this.props.value.id}`}>
+          <ListItemTitle>{this.props.value.name}</ListItemTitle>
         </ListItemAnchor>
         <ListItemMenu>
           <IconMenu data-item={this.props.value.id} onClick={this.onShowMenu.bind(this)}/>
@@ -119,6 +152,31 @@ class Item extends Component {
     )
   }
 }
+
+
+const Btn = styled.a`
+  font-family: 'Raleway', sans-serif;
+  padding: 6px 15px 5px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #369EFB;
+  border-radius: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2a85d7;
+  }
+`;
+
+const BtnCreate = styled(Btn)`
+  position: absolute;
+  top: 10px;
+  right: 0;
+`;
 
 const Menu = styled.ul`
   display: none;
@@ -176,98 +234,24 @@ const MenuShare = styled(MenuItemAnchor)`
 
 const Content = styled.div`
   width: 640px;
-  margin: 50px auto 0;
+  margin: 80px auto 0;
 `;
 
 const Profile = styled.div`
   position: relative;
+  margin-bottom: 40px;
 `;
 
 const Name = styled.h1`
   font-size: 24px;
   font-weight: bold;
-  margin: 0 0 20px;
-`;
-
-const BtnGhost = styled(Link) `
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-family: 'Raleway', sans-serif;
-  display: inline-block;
-  color: #369efb;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 4px 20px;
-  border: 1px #369efb solid;
-  border-radius: 4px;
-  transition: .1s ease-in;
-  letter-spacing: .1em;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #369efb;
-    color: #fff;
-  }
-`
-
-const BtnFill = styled(Link) `
-  font-family: 'Raleway', sans-serif;
-  display: inline-block;
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  padding: 4px 20px;
-  border: 1px #369efb solid;
-  border-radius: 4px;
-  background-color: #369efb;
-  transition: .1s ease-in;
-  letter-spacing: .1em;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #2a85d7;
-  }
-`
-
-const UserItem = styled.div`
-  width: 100%;
-  margin-top: 48px;
-`
-
-const Nav = styled(TabList)`
-  display: block;
-  padding: 0;
-  margin: 0;
-  border-bottom: 1px solid #d8dbde;
-`
-const NavItem = styled(Tab)`
-  display: inline-block;
-  padding: 8px 0;
-  margin: 0 24px -1px 0;
-  font-size: 14px;
-  cursor: pointer;
-
-  &.react-tabs__tab--selected {
-    border-bottom: 1px solid #4e5067;
-    cursor: default;
-  }
-`
-
-const ListTools = styled.div `
-  display: flex;
-  justify-content: flex-end;
-  padding: 16px 8px;
 `;
 
 const List = styled.ul`
-  display: block;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid #d8dbde;
-`
+  border-top: 3px solid #fafafa;
+`;
 
 const ListItem = styled.li`
   display: flex;
@@ -279,10 +263,6 @@ const ListItem = styled.li`
 
   &:hover {
     background-color: #fcfcfc;
-  }
-
-  &:last-child {
-    border-bottom: 0;
   }
 `
 
@@ -308,6 +288,18 @@ const IconMenu = styled(IoIosMore) `
   width: 24px;
   height: 24px;
   cursor: pointer;
+`;
+
+const ModalInner = styled.div`
+  width: 480px;
+`;
+
+const Input = styled.input`
+  width: 392px;
+
+  &::placeholder {
+    color: #bebebe;
+  }
 `;
 
 export default Top

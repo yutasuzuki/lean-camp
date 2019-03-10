@@ -8,12 +8,12 @@ class Api::LeanCanvasController < ApplicationController
   end
 
   def show
-    render json: @lean_canvas.find(params[:id])
+    puts params
+    render json: @lean_canvas.find_by(project_id: params[:id])
   end
 
   def create
-    puts 'create'
-    lean_canvas = LeanCanva.find_or_initialize_by(id: params[:id])
+    lean_canvas = LeanCanva.find_or_initialize_by(project_id: params[:project_id])
     lean_canvas.user_id = current_user.id
     lean_canvas.update_attributes(lean_canvas_params)
     render json: params

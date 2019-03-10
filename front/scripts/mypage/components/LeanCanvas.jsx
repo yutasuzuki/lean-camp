@@ -6,19 +6,12 @@ import axios from 'axios';
 import TextareaAutoHeight from './TextareaAutoHeight';
 import { IoIosArrowBack } from 'react-icons/io';
 
-const Textarea = styled(TextareaAutoHeight) `
-  width: 100%;
-  margin-top: 5px;
-  border: 0;
-  outline: 0;
-  resize: none;
-`
-
 class LeanCanvas extends Component {
   constructor(props) {
     super(props);
     this.state  = {
       id: null,
+      project_id: Number(this.props.match.params.project_id), 
       problem: '',
       solution: '',
       unique_value: '',
@@ -37,8 +30,10 @@ class LeanCanvas extends Component {
   }
 
   componentDidMount() {
-    if (this.props.match.params.id) {
-      axios.get(`/api/lean_canvas/${this.props.match.params.id}`).then(({ data }) => {
+    // TODO: ここの処理はReduxに写す
+    if (this.props.match.params.project_id) {
+      axios.get(`/api/lean_canvas/${this.props.match.params.project_id}`).then(({ data }) => {
+        console.log(data);
         const state = Object.assign({}, data, { loaded: true });
         this.setState(state);
       });
@@ -77,19 +72,7 @@ class LeanCanvas extends Component {
       )
     }
     return (
-      <Main>
-        <div className='u-flex-row-between'>
-          <div className='c-lean-canvas-title'>
-            <div className='c-lean-canvas-title__text'>サービス名</div>
-            <input
-              type='text' 
-              onChange={this.onChangeTitle.bind(this)} 
-              className='c-lean-canvas-title__input'
-              defaultValue={this.state['service_name']}
-            />
-          </div>
-          <div>作成日</div>
-        </div>
+      <div>
         <div className='c-lean-canvas'>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--problem'>
             <h3 className='c-lean-canvas__title'>なぜお客様は喜んでくれる？</h3>
@@ -225,10 +208,10 @@ class LeanCanvas extends Component {
           <a onClick={this.props.history.goBack.bind(this)}>
             <FooterStickyBack />
           </a>
-          <BtnSave onClick={this.onSave.bind(this)}>Save</BtnSave>
+          <BtnSave onClick={this.onSave.bind(this)}>SAVE</BtnSave>
         </FooterSticky>
         <Toast />
-      </Main>
+      </div>
     )
   }
 }
@@ -248,12 +231,20 @@ const FooterSticky = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, .5);
-  padding: 16px 3vw;
+  padding: 12px 3vw;
+`
+
+const Textarea = styled(TextareaAutoHeight) `
+  width: 100%;
+  margin-top: 5px;
+  border: 0;
+  outline: 0;
+  resize: none;
 `
 
 const FooterStickyBack = styled(IoIosArrowBack)`
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   fill: #0db5ff;
   cursor: pointer;
 
@@ -264,21 +255,15 @@ const FooterStickyBack = styled(IoIosArrowBack)`
 
 const BtnSave = styled.a`
   font-family: 'Raleway', sans-serif;
-  display: inline-block;
-  color: #fff;
-  background-color: #369efb;
-  text-align: center;
+  padding: 6px 15px 5px;
+  font-size: 12px;
   text-decoration: none;
-  padding: 8px 32px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #369efb;
-  border-radius: 4px;
+  color: #fff;
+  background-color: #369EFB;
+  border-radius: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-weight: bold;
-  font-size: 20px;
-  transition: all 0.1s ease-in 0s;
-  letter-spacing: .25em;
-  cursor: pointer;
 
   &:hover {
     background-color: #2a85d7;

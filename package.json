@@ -37,6 +37,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-icons": "^3.3.0",
+    "react-modal": "^3.8.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-tabs": "^3.0.0",

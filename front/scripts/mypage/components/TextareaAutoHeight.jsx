@@ -24,7 +24,7 @@ class TextareaAutoHeight extends Component {
     if(scrollHeight < doubleLineHeight){
       scrollHeight = doubleLineHeight;
     }
-    this.style.height = scrollHeight + 'px';
+    this.style.height = `${scrollHeight}px`;
   }
 
   render() {

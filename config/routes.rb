@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'projects/name'
+  get 'projects/slug'
   root to: 'top#index'
 
   get 'mypage', to: 'mypage#index'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, { format: 'json' } do
+    resources :project, :only => [:index, :create, :show, :update]
     resources :company, :only => [:index]
     resources :lean_canvas, :only => [:index, :create, :show, :update, :destroy]
     resources :user, :only => [:index, :update]

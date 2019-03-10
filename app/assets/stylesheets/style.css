@@ -663,6 +663,175 @@ input[type="checkbox"] {
   letter-spacing: .1em;
   cursor: pointer; }
 
+.c-experiment-board {
+  display: grid;
+  grid-template-rows: max-content;
+  grid-template-columns: repeat(19, 1fr);
+  grid-template-areas: "harf-title harf-title harf-title harf-title harf-title harf-title harf-title harf-title title-0        title-1    title-1    title-2    title-2    title-3    title-3    title-4    title-4    title-5    title-5" "customer   customer   customer   customer   customer   customer   customer   customer   title-customer customer-1 customer-1 customer-2 customer-2 customer-3 customer-3 customer-4 customer-4 customer-5 customer-5" "problem    problem    problem    problem    problem    problem    problem    problem    title-problem  problem-1  problem-1  problem-2  problem-2  problem-3  problem-3  problem-4  problem-4  problem-5  problem-5" "solution   solution   solution   solution   solution   solution   solution   solution   title-solution solution-1 solution-1 solution-2 solution-2 solution-3 solution-3 solution-4 solution-4 solution-5 solution-5";
+  border: 2px solid #273444;
+  border-radius: 4px;
+  background-color: #fff; }
+  .c-experiment-board__title {
+    margin: 0;
+    padding: 4px;
+    font-size: 12px; }
+    .c-experiment-board__title--half {
+      grid-area: harf-title;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--1 {
+      grid-area: title-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--2 {
+      grid-area: title-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--3 {
+      grid-area: title-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--4 {
+      grid-area: title-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--5 {
+      grid-area: title-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--0 {
+      grid-area: title-0;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--customer {
+      grid-area: title-customer;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--problem {
+      grid-area: title-problem;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__title--solution {
+      grid-area: title-solution;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+  .c-experiment-board__cell {
+    min-height: 100px;
+    padding: 10px; }
+    .c-experiment-board__cell--customer {
+      grid-area: customer;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--customer-0 {
+      grid-area: customer-0;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--customer-1 {
+      grid-area: customer-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--customer-2 {
+      grid-area: customer-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--customer-3 {
+      grid-area: customer-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--customer-4 {
+      grid-area: customer-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--customer-5 {
+      grid-area: customer-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--problem {
+      grid-area: problem;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--problem-0 {
+      grid-area: problem-0;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--problem-1 {
+      grid-area: problem-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--problem-2 {
+      grid-area: problem-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--problem-3 {
+      grid-area: problem-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--problem-4 {
+      grid-area: problem-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--problem-5 {
+      grid-area: problem-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--solution {
+      grid-area: solution;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--solution-0 {
+      grid-area: solution-0;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--solution-1 {
+      grid-area: solution-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--solution-2 {
+      grid-area: solution-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--solution-3 {
+      grid-area: solution-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--solution-4 {
+      grid-area: solution-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--solution-5 {
+      grid-area: solution-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+  .c-experiment-board__subtitle {
+    font-size: .8vw;
+    font-weight: normal;
+    margin: 0;
+    opacity: .6; }
+  .c-experiment-board__textarea {
+    width: 100%;
+    margin-top: 5px;
+    border: 0;
+    outline: 0;
+    resize: none; }
+
+.c-lean-canvas-title {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #273444;
+  min-width: 500px; }
+  .c-lean-canvas-title__text {
+    width: 100px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    font-weight: bold; }
+  .c-lean-canvas-title__input {
+    outline: 0;
+    border: 0;
+    width: 90%;
+    padding-bottom: 5px;
+    padding-left: 20px; }
+
 .c-form {
   display: flex;
   align-items: center;
