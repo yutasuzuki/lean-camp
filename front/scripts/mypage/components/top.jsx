@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { IoIosMore } from 'react-icons/io';
+import Loader from './Loader';
 
 const ModalStyles = {
   content : {
@@ -75,7 +76,7 @@ class Top extends Component {
 
   render() {
     if (!this.props.user.companies) {
-      return <div>Loading</div>
+      return <Loader />
     }
     const companies = this.props.user.companies.map(company => {
        return <div><Link to={`/company/${company.id}`}>{company.name}</Link></div>
@@ -160,7 +161,7 @@ const Btn = styled.a`
   font-size: 12px;
   text-decoration: none;
   color: #fff;
-  background-color: #369EFB;
+  background-color: #369efb;
   border-radius: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;

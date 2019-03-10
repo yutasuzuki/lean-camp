@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import axios from 'axios';
 import TextareaAutoHeight from './TextareaAutoHeight';
+import Loader from './Loader';
 import { IoIosArrowBack } from 'react-icons/io';
 
 class LeanCanvas extends Component {
@@ -68,7 +69,7 @@ class LeanCanvas extends Component {
   render() {
     if (!this.state.loaded) {
       return (
-        <div>ローデング</div>
+        <Loader />
       )
     }
     return (
