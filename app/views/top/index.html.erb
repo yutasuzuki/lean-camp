@@ -22,9 +22,13 @@
     </div>
   </div>
   <div id='js-service' class='u-position--relative'>
-    <div id='js-signboard-service' class='c-signboard-container'>
+    <%
+=begin%>
+ <div id='js-signboard-service' class='c-signboard-container'>
       <div class='c-signboard'>service</div>
-    </div>
+    </div> 
+<%
+=end%>
     <div class='p-top-content'>
       <div class='p-top-content__heading'>
         <h2 class='c-heading--border'>
@@ -43,23 +47,7 @@
         <%= link_to 'Try Playground', playground_lean_canvas_path, { :class => 'c-btn--primary c-btn--large'} %>
       </div>
     </div>
-    <div class='p-top-content'>
-      <div class='p-top-content__heading'>
-        <h2 class='c-heading--border'>OKR</h2>
-      </div>
-      <p class='p-top-content__description'>
-        LEAN CANVASは1ページで作るビジネスモデルの設計図です。<br>
-        項目に沿って作成することでビジネスモデルの有効性と検証することができます。<br>
-        またビジネスモデルの転換や移行のきっかけとしても有用です。
-      </p>
-      <div class='p-top-content__caption'>
-        <img class='u-width--full' src='./assets/lcp.png'>
-      </div>
-      <div class='p-top-content__btn'>
-        <%= link_to 'Try Playground', playground_lean_canvas_path, { :class => 'c-btn--primary c-btn--large'} %>
-      </div>
-    </div>
-  </div>
+  </div> 
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.0/TweenMax.min.js"></script>

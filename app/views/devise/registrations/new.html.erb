@@ -19,22 +19,19 @@
 
       <div class='c-form p-form-devise__item'>
         <%= f.label :password, class: 'c-form__label' %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
         <%= f.password_field :password, autocomplete: "off", class: 'c-form__input' %>
       </div>
 
       <div class='c-form p-form-devise__item'>
-        <%= f.label :password_confirmation, class: 'c-form__label' %>
+        <%= f.label :password, class: 'c-form__label' %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'c-form__input' %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up" %>
+      <div class='p-form-devise__submit'>
+        <%= f.submit 'SIGN UP', class: 'c-btn--primary c-btn--large' %>
       </div>
     <% end %>
   </div>
 </main>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>

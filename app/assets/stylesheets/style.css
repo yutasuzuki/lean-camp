@@ -1025,7 +1025,6 @@ input[type="checkbox"] {
   .c-form__input {
     flex: 9;
     padding: 8px 24px 8px 0;
-    color: #0b77a7;
     font-size: 16px; }
 
 .c-heading--border {
@@ -1206,13 +1205,14 @@ input[type="checkbox"] {
 .p-copyright {
   width: 100%;
   text-align: center;
-  padding: 40px 0 80px; }
+  padding: 10px; }
   .p-copyright__text {
-    color: #fff; }
+    font-weight: bold; }
 
 .p-footer {
   position: relative;
-  background-color: #273444;
+  background-color: #c5c5c5;
+  margin-top: 80px;
   z-index: 1; }
   .p-footer__nav {
     display: flex;
@@ -1330,7 +1330,8 @@ input[type="checkbox"] {
     flex: 4; }
   .p-mainvisual__artwork {
     flex: 5;
-    padding-left: 60px; }
+    padding-left: 60px;
+    margin-top: -60px; }
   .p-mainvisual__text {
     text-shadow: 0 0 4px #fff;
     color: #4e5067; }

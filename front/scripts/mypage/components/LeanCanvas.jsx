@@ -76,7 +76,7 @@ class LeanCanvas extends Component {
       <div>
         <div className='c-lean-canvas'>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--problem'>
-            <h3 className='c-lean-canvas__title'>なぜお客様は喜んでくれる？</h3>
+            <h3 className='c-lean-canvas__title'>② なぜお客様は喜んでくれる？</h3>
             <p className='c-lean-canvas__subtitle'>課題</p>
             <p className='c-lean-canvas__subtitle'>PROBLEM</p>
             <Textarea 
@@ -97,7 +97,7 @@ class LeanCanvas extends Component {
             />
           </div>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--solution'>
-            <h3 className='c-lean-canvas__title'>具体的に何を提供する？</h3>
+            <h3 className='c-lean-canvas__title'>④ 具体的に何を提供する？</h3>
             <p className='c-lean-canvas__subtitle'>ソリューション</p>
             <p className='c-lean-canvas__subtitle'>SOLUTION</p>
             <Textarea 
@@ -108,7 +108,7 @@ class LeanCanvas extends Component {
             />
           </div>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--key-metrics'>
-            <h3 className='c-lean-canvas__title'>喜んだことをどうやって知る？</h3>
+            <h3 className='c-lean-canvas__title'>⑧ 喜んだことをどうやって知る？</h3>
             <p className='c-lean-canvas__subtitle'>主要指標</p>
             <p className='c-lean-canvas__subtitle'>KEY METRICS</p>
             <Textarea 
@@ -119,7 +119,7 @@ class LeanCanvas extends Component {
             />
           </div>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--unique-value'>
-            <h3 className='c-lean-canvas__title'>なぜお客様は我々から買いたくなる？</h3>
+            <h3 className='c-lean-canvas__title'>③ なぜお客様は我々から買いたくなる？</h3>
             <p className='c-lean-canvas__subtitle'>独自の価値提案</p>
             <p className='c-lean-canvas__subtitle'>UNIQUE VALUE PROPOSITION</p>
             <Textarea 
@@ -140,7 +140,7 @@ class LeanCanvas extends Component {
             />
           </div>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--advantage'>
-            <h3 className='c-lean-canvas__title'>なぜ我々は喜ばせることができる？</h3>
+            <h3 className='c-lean-canvas__title'>⑨ なぜ我々は喜ばせることができる？</h3>
             <p className='c-lean-canvas__subtitle'>圧倒的な優位性</p>
             <p className='c-lean-canvas__subtitle'>UNFAIR ADVANTAGE</p>
             <Textarea 
@@ -151,7 +151,7 @@ class LeanCanvas extends Component {
             />
           </div>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--channels'>
-            <h3 className='c-lean-canvas__title'>どうやってコミュニケーションする？</h3>
+            <h3 className='c-lean-canvas__title'>⑤ どうやってコミュニケーションする？</h3>
             <p className='c-lean-canvas__subtitle'>チャネル</p>
             <p className='c-lean-canvas__subtitle'>CHANNELS</p>
             <Textarea 
@@ -162,7 +162,7 @@ class LeanCanvas extends Component {
             />
           </div>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--customer-segments'>
-            <h3 className='c-lean-canvas__title'>誰に喜んでほしい？</h3>
+            <h3 className='c-lean-canvas__title'>① 誰に喜んでほしい？</h3>
             <p className='c-lean-canvas__subtitle'>顧客セグメント</p>
             <p className='c-lean-canvas__subtitle'>CUSTOMER SEGMENTS</p>
             <Textarea 
@@ -183,7 +183,7 @@ class LeanCanvas extends Component {
             />
           </div>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--cost'>
-            <h3 className='c-lean-canvas__title'>コストはどれくらいかかる？</h3>
+            <h3 className='c-lean-canvas__title'>⑦ コストはどれくらいかかる？</h3>
             <p className='c-lean-canvas__subtitle'>コスト構造</p>
             <p className='c-lean-canvas__subtitle'>COST STRUCTURE</p>
             <Textarea 
@@ -194,7 +194,7 @@ class LeanCanvas extends Component {
             />
           </div>
           <div className='c-lean-canvas__cell c-lean-canvas__cell--revenue'>
-            <h3 className='c-lean-canvas__title'>結果として我々には何がもたらされる？</h3>
+            <h3 className='c-lean-canvas__title'>⑥ 結果として我々には何がもたらされる？</h3>
             <p className='c-lean-canvas__subtitle'>収入の流れ</p>
             <p className='c-lean-canvas__subtitle'>REVENUE STREAMS</p>
             <Textarea 
