@@ -667,61 +667,102 @@ input[type="checkbox"] {
   display: grid;
   grid-template-rows: max-content;
   grid-template-columns: repeat(19, 1fr);
-  grid-template-areas: "harf-title     harf-title     harf-title     harf-title     harf-title     harf-title     harf-title     harf-title     title-0            title-1        title-1        title-2        title-2        title-3        title-3        title-4        title-4        title-5        title-5" "customer       customer       customer       customer       customer       customer       customer       customer       title-customer     customer-1     customer-1     customer-2     customer-2     customer-3     customer-3     customer-4     customer-4     customer-5     customer-5" "problem        problem        problem        problem        problem        problem        problem        problem        title-problem      problem-1      problem-1      problem-2      problem-2      problem-3      problem-3      problem-4      problem-4      problem-5      problem-5" "solution       solution       solution       solution       solution       solution       solution       solution       title-solution     solution-1     solution-1     solution-2     solution-2     solution-3     solution-3     solution-4     solution-4     solution-5     solution-5" "precondition   precondition   precondition   precondition   precondition   precondition   precondition   precondition   title-precondition precondition-1 precondition-1 precondition-2 precondition-2 precondition-3 precondition-3 precondition-4 precondition-4 precondition-5 precondition-5";
+  grid-template-areas: "harf-title     harf-title     harf-title     harf-title     harf-title     harf-title     harf-title     harf-title     title-0            title-1        title-1        title-2        title-2        title-3        title-3        title-4        title-4        title-5        title-5" "customer       customer       customer       customer       customer       customer       customer       customer       title-customer     customer-1     customer-1     customer-2     customer-2     customer-3     customer-3     customer-4     customer-4     customer-5     customer-5" "customer       customer       customer       customer       customer       customer       customer       customer       title-customer     customer-1     customer-1     customer-2     customer-2     customer-3     customer-3     customer-4     customer-4     customer-5     customer-5" "customer       customer       customer       customer       customer       customer       customer       customer       title-customer     customer-1     customer-1     customer-2     customer-2     customer-3     customer-3     customer-4     customer-4     customer-5     customer-5" "customer       customer       customer       customer       customer       customer       customer       customer       title-customer     customer-1     customer-1     customer-2     customer-2     customer-3     customer-3     customer-4     customer-4     customer-5     customer-5" "customer       customer       customer       customer       customer       customer       customer       customer       title-customer     customer-1     customer-1     customer-2     customer-2     customer-3     customer-3     customer-4     customer-4     customer-5     customer-5" "problem        problem        problem        problem        problem        problem        problem        problem        title-problem      problem-1      problem-1      problem-2      problem-2      problem-3      problem-3      problem-4      problem-4      problem-5      problem-5" "problem        problem        problem        problem        problem        problem        problem        problem        title-problem      problem-1      problem-1      problem-2      problem-2      problem-3      problem-3      problem-4      problem-4      problem-5      problem-5" "problem        problem        problem        problem        problem        problem        problem        problem        title-problem      problem-1      problem-1      problem-2      problem-2      problem-3      problem-3      problem-4      problem-4      problem-5      problem-5" "problem        problem        problem        problem        problem        problem        problem        problem        title-problem      problem-1      problem-1      problem-2      problem-2      problem-3      problem-3      problem-4      problem-4      problem-5      problem-5" "problem        problem        problem        problem        problem        problem        problem        problem        title-problem      problem-1      problem-1      problem-2      problem-2      problem-3      problem-3      problem-4      problem-4      problem-5      problem-5" "solution       solution       solution       solution       solution       solution       solution       solution       title-solution     solution-1     solution-1     solution-2     solution-2     solution-3     solution-3     solution-4     solution-4     solution-5     solution-5" "solution       solution       solution       solution       solution       solution       solution       solution       title-solution     solution-1     solution-1     solution-2     solution-2     solution-3     solution-3     solution-4     solution-4     solution-5     solution-5" "solution       solution       solution       solution       solution       solution       solution       solution       title-solution     solution-1     solution-1     solution-2     solution-2     solution-3     solution-3     solution-4     solution-4     solution-5     solution-5" "solution       solution       solution       solution       solution       solution       solution       solution       title-solution     solution-1     solution-1     solution-2     solution-2     solution-3     solution-3     solution-4     solution-4     solution-5     solution-5" "solution       solution       solution       solution       solution       solution       solution       solution       title-solution     solution-1     solution-1     solution-2     solution-2     solution-3     solution-3     solution-4     solution-4     solution-5     solution-5" "precondition   precondition   precondition   precondition   precondition   precondition   precondition   precondition   title-precondition precondition-1 precondition-1 precondition-2 precondition-2 precondition-3 precondition-3 precondition-4 precondition-4 precondition-5 precondition-5" "precondition   precondition   precondition   precondition   precondition   precondition   precondition   precondition   title-precondition precondition-1 precondition-1 precondition-2 precondition-2 precondition-3 precondition-3 precondition-4 precondition-4 precondition-5 precondition-5" "precondition   precondition   precondition   precondition   precondition   precondition   precondition   precondition   title-precondition precondition-1 precondition-1 precondition-2 precondition-2 precondition-3 precondition-3 precondition-4 precondition-4 precondition-5 precondition-5" "precondition   precondition   precondition   precondition   precondition   precondition   precondition   precondition   title-precondition precondition-1 precondition-1 precondition-2 precondition-2 precondition-3 precondition-3 precondition-4 precondition-4 precondition-5 precondition-5" "precondition   precondition   precondition   precondition   precondition   precondition   precondition   precondition   title-precondition precondition-1 precondition-1 precondition-2 precondition-2 precondition-3 precondition-3 precondition-4 precondition-4 precondition-5 precondition-5" "helper-title   helper-title   helper-title   helper-title   helper-title   helper-title   helper-title   helper-title   title-method       method-1       method-1       method-2       method-2       method-3       method-3       method-4       method-4       method-5       method-5" "helper-1       helper-1       helper-1       helper-1       helper-2       helper-2       helper-2       helper-2       title-method       method-1       method-1       method-2       method-2       method-3       method-3       method-4       method-4       method-5       method-5" "helper-1       helper-1       helper-1       helper-1       helper-2       helper-2       helper-2       helper-2       title-method       method-1       method-1       method-2       method-2       method-3       method-3       method-4       method-4       method-5       method-5" "helper-1       helper-1       helper-1       helper-1       helper-2       helper-2       helper-2       helper-2       title-method       method-1       method-1       method-2       method-2       method-3       method-3       method-4       method-4       method-5       method-5" "helper-1       helper-1       helper-1       helper-1       helper-2       helper-2       helper-2       helper-2       title-method       method-1       method-1       method-2       method-2       method-3       method-3       method-4       method-4       method-5       method-5" "helper-1       helper-1       helper-1       helper-1       helper-2       helper-2       helper-2       helper-2       go-out-title       go-out-title   go-out-title   go-out-title   go-out-title   go-out-title   go-out-title   go-out-title   go-out-title   go-out-title   go-out-title" "helper-3       helper-3       helper-3       helper-3       helper-4       helper-4       helper-4       helper-4       title-result       result-1       result-1       result-2       result-2       result-3       result-3       result-4       result-4       result-5       result-5" "helper-3       helper-3       helper-3       helper-3       helper-4       helper-4       helper-4       helper-4       title-result       result-1       result-1       result-2       result-2       result-3       result-3       result-4       result-4       result-5       result-5" "helper-3       helper-3       helper-3       helper-3       helper-4       helper-4       helper-4       helper-4       title-result       result-1       result-1       result-2       result-2       result-3       result-3       result-4       result-4       result-5       result-5" "helper-3       helper-3       helper-3       helper-3       helper-4       helper-4       helper-4       helper-4       title-result       result-1       result-1       result-2       result-2       result-3       result-3       result-4       result-4       result-5       result-5" "helper-3       helper-3       helper-3       helper-3       helper-4       helper-4       helper-4       helper-4       title-result       result-1       result-1       result-2       result-2       result-3       result-3       result-4       result-4       result-5       result-5" "helper-5       helper-5       helper-5       helper-5       helper-6       helper-6       helper-6       helper-6       title-learn        learn-1        learn-1        learn-2        learn-2        learn-3        learn-3        learn-4        learn-4        learn-5        learn-5";
   border: 2px solid #273444;
   border-radius: 4px;
   background-color: #fff; }
   .c-experiment-board__title {
     margin: 0;
     padding: 4px;
-    font-size: 12px; }
+    font-size: 12px;
+    color: #fff; }
     .c-experiment-board__title--half {
       grid-area: harf-title;
       border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
-    .c-experiment-board__title--1 {
-      grid-area: title-1;
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
+    .c-experiment-board__title--helper {
+      grid-area: helper-title;
       border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
-    .c-experiment-board__title--2 {
-      grid-area: title-2;
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
+    .c-experiment-board__title--go-out {
+      grid-area: go-out-title;
       border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
-    .c-experiment-board__title--3 {
-      grid-area: title-3;
-      border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
-    .c-experiment-board__title--4 {
-      grid-area: title-4;
-      border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
-    .c-experiment-board__title--5 {
-      grid-area: title-5;
-      border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
     .c-experiment-board__title--0 {
       grid-area: title-0;
       border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
+    .c-experiment-board__title--1 {
+      grid-area: title-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
+    .c-experiment-board__title--2 {
+      grid-area: title-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
+    .c-experiment-board__title--3 {
+      grid-area: title-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
+    .c-experiment-board__title--4 {
+      grid-area: title-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
+    .c-experiment-board__title--5 {
+      grid-area: title-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #4e5067; }
     .c-experiment-board__title--customer {
       grid-area: title-customer;
       border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
+      border-bottom: 2px solid #273444;
+      background-color: #6e7087; }
     .c-experiment-board__title--problem {
       grid-area: title-problem;
       border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
+      border-bottom: 2px solid #273444;
+      background-color: #6e7087; }
     .c-experiment-board__title--solution {
       grid-area: title-solution;
       border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
+      border-bottom: 2px solid #273444;
+      background-color: #6e7087; }
     .c-experiment-board__title--precondition {
       grid-area: title-precondition;
       border-right: 2px solid #273444;
-      border-bottom: 2px solid #273444; }
+      border-bottom: 2px solid #273444;
+      background-color: #6e7087; }
+    .c-experiment-board__title--method {
+      grid-area: title-method;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #6e7087; }
+    .c-experiment-board__title--result {
+      grid-area: title-result;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #6e7087; }
+    .c-experiment-board__title--learn {
+      grid-area: title-learn;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #6e7087; }
   .c-experiment-board__cell {
     min-height: 100px;
     padding: 10px; }
+    .c-experiment-board__cell h3 {
+      font-size: 1vw;
+      font-weight: bold;
+      margin: 0 0 10px; }
     .c-experiment-board__cell--customer {
       grid-area: customer;
       border-right: 2px solid #273444;
@@ -834,11 +875,113 @@ input[type="checkbox"] {
       grid-area: precondition-5;
       border-right: 2px solid #273444;
       border-bottom: 2px solid #273444; }
-  .c-experiment-board__subtitle {
+    .c-experiment-board__cell--method-0 {
+      grid-area: method-0;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--method-1 {
+      grid-area: method-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--method-2 {
+      grid-area: method-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--method-3 {
+      grid-area: method-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--method-4 {
+      grid-area: method-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--method-5 {
+      grid-area: method-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--precondition {
+      grid-area: precondition;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--helper-1 {
+      grid-area: helper-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #efefef; }
+    .c-experiment-board__cell--helper-2 {
+      grid-area: helper-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #efefef; }
+    .c-experiment-board__cell--helper-3 {
+      grid-area: helper-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #efefef; }
+    .c-experiment-board__cell--helper-4 {
+      grid-area: helper-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #efefef; }
+    .c-experiment-board__cell--helper-5 {
+      grid-area: helper-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #efefef; }
+    .c-experiment-board__cell--helper-6 {
+      grid-area: helper-6;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444;
+      background-color: #efefef; }
+    .c-experiment-board__cell--result-1 {
+      grid-area: result-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--result-2 {
+      grid-area: result-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--result-3 {
+      grid-area: result-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--result-4 {
+      grid-area: result-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--result-5 {
+      grid-area: result-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--learn-1 {
+      grid-area: learn-1;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--learn-2 {
+      grid-area: learn-2;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--learn-3 {
+      grid-area: learn-3;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--learn-4 {
+      grid-area: learn-4;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+    .c-experiment-board__cell--learn-5 {
+      grid-area: learn-5;
+      border-right: 2px solid #273444;
+      border-bottom: 2px solid #273444; }
+  .c-experiment-board__lead {
     font-size: .8vw;
     font-weight: normal;
-    margin: 0;
+    margin: 0 0 10px;
     opacity: .6; }
+  .c-experiment-board__text {
+    font-size: 1vw;
+    font-weight: bold;
+    margin: 0 0 10px; }
   .c-experiment-board__textarea {
     width: 100%;
     margin-top: 5px;

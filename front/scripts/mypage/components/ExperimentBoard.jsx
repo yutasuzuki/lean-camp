@@ -13,34 +13,24 @@ class ExperimentBoard extends Component {
     this.state  = {
       id: null,
       project_id: Number(this.props.match.params.project_id), 
+      customer: '',
+      customer_1: '', customer_2: '', customer_3: '', customer_4: '', customer_5: '',
       problem: '',
+      problem_1: '', problem_2: '', problem_3: '', problem_4: '', problem_5: '',
       solution: '',
-      unique_value: '',
-      advantage: '',
-      customer_segments: '',
-      existing: '',
-      key_metrics: '',
-      concept: '',
-      channels: '',
-      early_adopter: '',
-      cost: '',
-      revenue: '',
-      service_name: '',
+      solution_1: '', solution_2: '', solution_3: '', solution_4: '', solution_5: '',
+      precondition: '',
+      precondition_1: '', precondition_2: '', precondition_3: '', precondition_4: '', precondition_5: '',
+      method_1: '', method_2: '', method_3: '', method_4: '', method_5: '',
+      result_1: '', result_2: '', result_3: '', result_4: '', result_5: '',
+      learn_1: '', learn_2: '', learn_3: '', learn_4: '', learn_5: '',
       loaded: false,
     }
   }
 
   componentDidMount() {
     // TODO: ここの処理はReduxに写す
-    if (this.props.match.params.project_id) {
-      axios.get(`/api/lean_canvas/${this.props.match.params.project_id}`).then(({ data }) => {
-        console.log(data);
-        const state = Object.assign({}, data, { loaded: true });
-        this.setState(state);
-      });
-    } else {
-      this.setState({ loaded: true });
-    }
+    this.setState({ loaded: true });
   }
 
   onChangeHandler(e) {
@@ -48,22 +38,18 @@ class ExperimentBoard extends Component {
     this.setState({[key]: e.target.value});
   }
 
-  onChangeTitle(e) {
-    this.setState({'service_name': e.target.value});
-  }
-
   onSave() {
-    axios.post('/api/lean_canvas', this.state).then(({ data }) => {
-      const state = Object.assign({}, data, { loaded: true });
-      this.setState(state);
-      toast.success('保存しました', {
-        position: 'top-right',
-        autoClose: 4000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
-    });
+    // axios.post('/api/lean_canvas', this.state).then(({ data }) => {
+    //   const state = Object.assign({}, data, { loaded: true });
+    //   this.setState(state);
+    //   toast.success('保存しました', {
+    //     position: 'top-right',
+    //     autoClose: 4000,
+    //     hideProgressBar: true,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //   });
+    // });
   }
 
   render() {
@@ -76,10 +62,10 @@ class ExperimentBoard extends Component {
       <div>
         <div className='c-experiment-board'>
           <div className='c-experiment-board__title c-experiment-board__title--half'>
-            <p className='c-experiment-board__subtitle'>既存の代替品</p>
+            <h3 className='c-experiment-board__title'>ブレストをはじめましょう！実験を始めるには右に移動させます。</h3>
           </div>
           <div className='c-experiment-board__title c-experiment-board__title--0'>
-            <h3 className='c-experiment-board__title'>experiment</h3>
+            <h3 className='c-experiment-board__title'>実験</h3>
           </div>
           <div className='c-experiment-board__title c-experiment-board__title--1'>
             <h3 className='c-experiment-board__title'>1</h3>
@@ -96,223 +82,209 @@ class ExperimentBoard extends Component {
           <div className='c-experiment-board__title c-experiment-board__title--5'>
             <h3 className='c-experiment-board__title'>5</h3>
           </div>
+
           <div className='c-experiment-board__cell c-experiment-board__cell--customer'>
+            <h3>あなたの顧客は具体的には誰ですか？</h3>
             <Textarea 
-              name='channels' 
+              name='customer' 
               changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
+              text={this.state.customer} 
               className='c-experiment-board__textarea' 
             />
           </div>
           <div className='c-experiment-board__title c-experiment-board__title--customer'>
-            <p className='c-experiment-board__subtitle'>CUSTOMER</p>
+            <p className='c-experiment-board__title'>顧客</p>
           </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--customer-1'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--customer-2'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--customer-3'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--customer-4'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--customer-5'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
+          
+          {[...Array(5)].map((customer, index) => {
+            const className = `c-experiment-board__cell c-experiment-board__cell--customer-${index + 1}`;
+            const name = `customer_${index + 1}`;
+            return (
+              <div className={className}>
+                <Textarea 
+                  name={name}
+                  changeTextarea={this.onChangeHandler.bind(this)} 
+                  text={this.state[name]} 
+                  className='c-experiment-board__textarea' 
+                />
+              </div>
+            )
+          })}
 
           <div className='c-experiment-board__cell c-experiment-board__cell--problem'>
+            <h3>顧客視点での問題は何ですか？</h3>
             <Textarea 
-              name='channels' 
+              name='problem' 
               changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
+              text={this.state.problem} 
               className='c-experiment-board__textarea' 
             />
           </div>
           <div className='c-experiment-board__title c-experiment-board__title--problem'>
-            <p className='c-experiment-board__subtitle'>PROBLEM</p>
+            <p className='c-experiment-board__title'>問題</p>
           </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--problem-1'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--problem-2'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--problem-3'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--problem-4'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--problem-5'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
+          {[...Array(5)].map((problem, index) => {
+            const className = `c-experiment-board__cell c-experiment-board__cell--problem-${index + 1}`;
+            const name = `problem_${index + 1}`;
+            return (
+              <div className={className}>
+                <Textarea 
+                  name={name}
+                  changeTextarea={this.onChangeHandler.bind(this)} 
+                  text={this.state[name]} 
+                  className='c-experiment-board__textarea' 
+                />
+              </div>
+            )
+          })}
 
           <div className='c-experiment-board__cell c-experiment-board__cell--solution'>
+            <h3>解決する価値を見出した上で、解決策を考えましょう！</h3>
             <Textarea 
-              name='channels' 
+              name='solution' 
               changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
+              text={this.state.solution} 
               className='c-experiment-board__textarea' 
             />
           </div>
           <div className='c-experiment-board__title c-experiment-board__title--solution'>
-            <p className='c-experiment-board__subtitle'>solution</p>
+            <p className='c-experiment-board__title'>解決策</p>
           </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--solution-1'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--solution-2'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--solution-3'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--solution-4'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--solution-5'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
+          {[...Array(5)].map((solution, index) => {
+            const className = `c-experiment-board__cell c-experiment-board__cell--solution-${index + 1}`;
+            const name = `solution_${index + 1}`;
+            return (
+              <div className={className}>
+                <Textarea 
+                  name={name}
+                  changeTextarea={this.onChangeHandler.bind(this)} 
+                  text={this.state[name]} 
+                  className='c-experiment-board__textarea' 
+                />
+              </div>
+            )
+          })}
 
           <div className='c-experiment-board__cell c-experiment-board__cell--precondition'>
+            <h3>仮説の正しさを実証できる前提となっているものをリストアップしましょう！</h3>
             <Textarea 
-              name='channels' 
+              name='precondition' 
               changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
+              text={this.state.precondition} 
               className='c-experiment-board__textarea' 
             />
           </div>
           <div className='c-experiment-board__title c-experiment-board__title--precondition'>
-            <p className='c-experiment-board__subtitle'>precondition</p>
+            <p className='c-experiment-board__title'>最も問題<br />なのは</p>
           </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-1'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-2'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-3'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-4'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
-          </div>
-          <div className='c-experiment-board__cell c-experiment-board__cell--precondition-5'>
-            <Textarea 
-              name='channels' 
-              changeTextarea={this.onChangeHandler.bind(this)} 
-              text={this.state.channels} 
-              className='c-experiment-board__textarea' 
-            />
+          {[...Array(5)].map((precondition, index) => {
+            const className = `c-experiment-board__cell c-experiment-board__cell--precondition-${index + 1}`;
+            const name = `precondition_${index + 1}`;
+            return (
+              <div className={className}>
+                <Textarea 
+                  name={name}
+                  changeTextarea={this.onChangeHandler.bind(this)} 
+                  text={this.state[name]} 
+                  className='c-experiment-board__textarea' 
+                />
+              </div>
+            )
+          })}
+
+          <div className='c-experiment-board__title c-experiment-board__title--helper'>
+            <h3 className='c-experiment-board__title'>実験を構築するために以下の文章が使用できます。</h3>
           </div>
 
+          <div className='c-experiment-board__title c-experiment-board__title--method'>
+            <p className='c-experiment-board__title'>方法<br />&<br />達成基準</p>
+          </div>
+          {[...Array(5)].map((method, index) => {
+            const className = `c-experiment-board__cell c-experiment-board__cell--method-${index + 1}`;
+            const name = `method_${index + 1}`;
+            return (
+              <div className={className}>
+                <Textarea 
+                  name={name}
+                  changeTextarea={this.onChangeHandler.bind(this)} 
+                  text={this.state[name]} 
+                  className='c-experiment-board__textarea' 
+                />
+              </div>
+            )
+          })}
 
+          <div className='c-experiment-board__title c-experiment-board__title--go-out'>
+            <h3 className='c-experiment-board__title'>ビルの外に飛び出そう！</h3>
+          </div>
+
+          <div className='c-experiment-board__cell c-experiment-board__cell--helper-1'>
+            <p className='c-experiment-board__lead'>顧客/問題の仮説を形成するために：</p>
+            <p className='c-experiment-board__text'>私は私の顧客がこの目標を達成するために、問題があると考えています。</p>
+          </div>
+
+          <div className='c-experiment-board__cell c-experiment-board__cell--helper-2'>
+            <p className='c-experiment-board__lead'>問題/解決策の仮説を形成するために：</p>
+            <p className='c-experiment-board__text'>私はこの解決策が、定量化できる結果をもたらすと考えています。</p>
+          </div>
+
+          <div className='c-experiment-board__cell c-experiment-board__cell--helper-3'>
+            <p className='c-experiment-board__lead'>あなたの仮説を形成するには：</p>
+            <p className='c-experiment-board__text'>仮説が正しいとわかるために、仮定が正しい必要があります。</p>
+          </div>
+
+          <div className='c-experiment-board__cell c-experiment-board__cell--helper-4'>
+            <p className='c-experiment-board__lead'>最もリスクの高い仮説を限定するために：</p>
+            <p className='c-experiment-board__text'>私の仮説立証にデータ量、コアとの仮定があります。？？？？</p>
+          </div>
+
+          <div className='c-experiment-board__cell c-experiment-board__cell--helper-5'>
+            <p className='c-experiment-board__lead'>テスト方法を決定するために：</p>
+            <p className='c-experiment-board__text'>仮説をテストするために最も簡単な方法を設定します。</p>
+          </div>
+
+          <div className='c-experiment-board__cell c-experiment-board__cell--helper-6'>
+            <p className='c-experiment-board__lead'>成功の可視化のために：</p>
+            <p className='c-experiment-board__text'>私は顧客を〇〇でテストして、顧客が□□になることを期待します。</p>
+          </div>
+
+          <div className='c-experiment-board__title c-experiment-board__title--result'>
+            <p className='c-experiment-board__title'>結果<br />&<br />決定</p>
+          </div>
+          {[...Array(5)].map((result, index) => {
+            const className = `c-experiment-board__cell c-experiment-board__cell--result-${index + 1}`;
+            const name = `result_${index + 1}`;
+            return (
+              <div className={className}>
+                <Textarea 
+                  name={name}
+                  changeTextarea={this.onChangeHandler.bind(this)} 
+                  text={this.state[name]} 
+                  className='c-experiment-board__textarea' 
+                />
+              </div>
+            )
+          })}
+
+          <div className='c-experiment-board__title c-experiment-board__title--learn'>
+            <p className='c-experiment-board__title'>学習</p>
+          </div>
+          {[...Array(5)].map((learn, index) => {
+            const className = `c-experiment-board__cell c-experiment-board__cell--learn-${index + 1}`;
+            const name = `learn_${index + 1}`;
+            return (
+              <div className={className}>
+                <Textarea 
+                  name={name}
+                  changeTextarea={this.onChangeHandler.bind(this)} 
+                  text={this.state[name]}
+                  className='c-experiment-board__textarea' 
+                />
+              </div>
+            )
+          })}
         </div>
 
-        <Textarea 
-          name='existing' 
-          changeTextarea={this.onChangeHandler.bind(this)} 
-          text={this.state.existing} 
-          className='c-experiment-board__textarea' 
-        />
         <FooterSticky>
           <a onClick={this.props.history.goBack.bind(this)}>
             <FooterStickyBack />
