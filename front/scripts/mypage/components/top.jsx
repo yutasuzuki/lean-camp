@@ -67,10 +67,17 @@ class Top extends Component {
     this.closeModal();
   }
 
-  async onDeleteItem(item) {
-    await axios.delete(`/api/lean_canvas/${item.id}`);
-    axios.get('/api/lean_canvas').then(({ data }) => {
-      this.props.onGetLeanCanvasList(data);
+  async onDeleteProject(item) {
+    await axios.delete(`/api/project/${item.id}`);
+    axios.get('/api/project').then(({ data }) => {
+      this.props.onGetProjects(data);
+    });
+  }
+
+  async onUpdateProject(item) {
+    await axios.patch(`/api/project/${item.id}`, item);
+    axios.get('/api/project').then(({ data }) => {
+      this.props.onGetProjects(data);
     });
   }
 
@@ -92,7 +99,7 @@ class Top extends Component {
 
         <List>
           {this.props.projects.list.map((value, index) => (
-            <Item type='lean_canvas' deleteItem={this.onDeleteItem.bind(this)} value={value} key={index} />
+            <Item updateProject={this.onUpdateProject.bind(this)} deleteProject={this.onDeleteProject.bind(this)} value={value} key={index} />
           ))}
         </List>
 
@@ -100,7 +107,7 @@ class Top extends Component {
           isOpen={this.state.modal}
           onRequestClose={this.closeModal.bind(this)}
           style={ModalStyles}
-          contentLabel="Example Modal">
+          contentLabel='Create Project Modal'>
           <ModalInner>
             <Input type='text' value={this.state.project.name} onChange={this.handleProjectTitle.bind(this)} placeholder='Awesome Project' />
             <Btn type='text' onClick={ this.onCreateProject.bind(this) }>Create</Btn>
@@ -116,11 +123,34 @@ class Item extends Component {
     super(props);
     this.state  = {
       show: false,
+      deleteModal: false,
+      editModal: false,
+      name: this.props.value.name,
     }
   }
 
   onShowMenu(e) {
     this.setState({show: !this.state.show});
+  }
+
+  onShowEditModal() {
+    this.setState({show: false});
+    this.setState({editModal: true});
+  }
+
+  onCloseEditModal() {
+    this.setState({editModal: false});
+  }
+
+  onProjectNameUpdate() {
+    this.props.updateProject({ id: this.props.value.id, name: this.state.name });
+    this.setState({editModal: false});
+  }
+
+  onEditProjectName(e) {
+    this.setState({ 
+      name: e.target.value
+    });
   }
 
   onClickShare() {
@@ -129,7 +159,16 @@ class Item extends Component {
 
   onClickDelete() {
     this.setState({show: false});
-    this.props.deleteItem({ type: this.props.type, id: this.props.value.id });
+    this.props.deleteProject({ type: this.props.type, id: this.props.value.id });
+  }
+
+  onShowDeleteModal() {
+    this.setState({show: false});
+    this.setState({deleteModal: true});
+  }
+
+  onCloseDeleteModal() {
+    this.setState({deleteModal: false});
   }
 
   render() {
@@ -142,13 +181,43 @@ class Item extends Component {
           <IconMenu data-item={this.props.value.id} onClick={this.onShowMenu.bind(this)}/>
           <Menu className={this.state.show ? 'is-show': ''}>
             <MenuItem>
-              <MenuShare onClick={this.onClickShare.bind(this)}>Share</MenuShare>
+              <MenuShare onClick={this.onShowEditModal.bind(this)}>Edit</MenuShare>
             </MenuItem>
             <MenuItem>
-              <MenuDelete onClick={this.onClickDelete.bind(this)}>Delete</MenuDelete>
+              <MenuShare onClick={this.onClickShare.bind(this)}>SHARE</MenuShare>
+            </MenuItem>
+            <MenuItem>
+              <MenuDelete onClick={this.onShowDeleteModal.bind(this)}>DELETE</MenuDelete>
             </MenuItem>
           </Menu>
         </ListItemMenu>
+
+        <Modal
+          isOpen={this.state.editModal}
+          onRequestClose={this.onCloseEditModal.bind(this)}
+          style={ModalStyles}
+          contentLabel="Create Project Modal">
+          <ModalInner>
+            <Input type='text' value={this.state.name} onChange={this.onEditProjectName.bind(this)} placeholder='Awesome Project' />
+            <Btn type='text' onClick={ this.onProjectNameUpdate.bind(this) }>UPDATE</Btn>
+          </ModalInner>
+        </Modal>
+
+        <Modal
+          isOpen={this.state.deleteModal}
+          onRequestClose={this.onCloseDeleteModal.bind(this)}
+          style={ModalStyles}
+          contentLabel="Delete Modal">
+          <ModalInner>
+            <div>
+              <p><TextStrong>{this.props.value.name}</TextStrong>を削除してもよろしいですか？</p>
+            </div>
+            <ModalBtnContainer>
+              <BtnCancel type='text' onClick={this.onCloseDeleteModal.bind(this)}>CANCEL</BtnCancel>
+              <BtnDelete type='text' onClick={this.onClickDelete.bind(this)}>DELETE</BtnDelete>
+            </ModalBtnContainer>
+          </ModalInner>
+        </Modal>
       </ListItem>
     )
   }
@@ -177,6 +246,27 @@ const BtnCreate = styled(Btn)`
   position: absolute;
   top: 10px;
   right: 0;
+`;
+
+const BtnCancel = styled(Btn)`
+  margin-right: 12px;
+  background-color: #999;
+  color: #fff;
+
+  &:hover {
+    background-color: #666;
+    color: #fff;
+  }
+`;
+
+const BtnDelete = styled(Btn)`
+  background-color: #f00;
+  color: #fff;
+
+  &:hover {
+    background-color: #d00;
+    color: #fff;
+  }
 `;
 
 const Menu = styled.ul`
@@ -293,6 +383,14 @@ const IconMenu = styled(IoIosMore) `
 
 const ModalInner = styled.div`
   width: 480px;
+`;
+
+const ModalBtnContainer = styled.div`
+  text-align: right;
+`;
+
+const TextStrong = styled.span`
+  font-weight: bold;
 `;
 
 const Input = styled.input`

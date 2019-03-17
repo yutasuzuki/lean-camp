@@ -31,7 +31,6 @@
           <%= link_to 'プロフィール変更', edit_user_registration_path %>
           <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => 'p-header__signout' %>
         <% else %>
-          <%= link_to 'playground', playground_lean_canvas_path, { :class => 'p-header__playground'} %>
           <%= link_to 'SIGN IN', new_user_session_path, { :class => 'p-header__signin'} %>
           <%= link_to 'SIGN UP', new_user_registration_path, { :class => 'p-header__signup'} %>
         <% end %>

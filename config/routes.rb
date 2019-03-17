@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, { format: 'json' } do
-    resources :project, :only => [:index, :create, :show, :update]
+    resources :project, :only => [:index, :create, :show, :update, :destroy]
     resources :company, :only => [:index]
     resources :lean_canvas, :only => [:index, :create, :show, :update, :destroy]
     resources :user, :only => [:index, :update]
