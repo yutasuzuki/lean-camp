@@ -543,7 +543,7 @@ input[type="radio"] {
       content: "";
       border-radius: 17px;
       vertical-align: middle;
-      border: 2px solid #dddddd;
+      border: 2px solid #ddd;
       background-color: #f0f0f0;
       margin: -2px 5px 0 0;
       transition: .1s; }
@@ -605,10 +605,6 @@ input[type="checkbox"] {
 
 .l-main {
   padding: 3vw; }
-
-.l-main-devise {
-  width: 480px;
-  margin: 80px auto 120px; }
 
 .c-box--notice {
   display: block;
@@ -1221,25 +1217,52 @@ input[type="checkbox"] {
     color: #fff;
     font-size: 12px; }
 
-.p-form-devise__heading {
-  text-align: center;
-  margin-bottom: 60px; }
-
-.p-form-devise__item {
-  margin-bottom: 42px; }
-
-.p-form-devise__checkbox {
-  margin: -12px auto 36px;
-  text-align: center; }
-
-.p-form-devise__submit {
-  text-align: center;
-  margin-bottom: 68px; }
-
-.p-form-devise__link > * {
-  margin-right: 16px; }
-  .p-form-devise__link > *:last-child {
-    margin-right: 0; }
+.p-form-devise {
+  position: relative;
+  padding: 0 96px; }
+  .p-form-devise__description {
+    padding-top: 60px;
+    width: 680px; }
+    .p-form-devise__description h1 {
+      font-size: 24px; }
+  .p-form-devise__card {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 6px -2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 480px;
+    margin: 0 auto 120px;
+    padding: 36px; }
+    .p-form-devise__card--sign-in {
+      position: absolute;
+      top: 50%;
+      right: 96px;
+      transform: translateY(-50%); }
+  .p-form-devise__heading {
+    text-align: center;
+    margin-bottom: 36px; }
+  .p-form-devise__forms > *:last-child {
+    margin-bottom: 36px; }
+  .p-form-devise__item {
+    margin-bottom: 20px; }
+  .p-form-devise__label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px; }
+  .p-form-devise__input {
+    width: 100%;
+    background-color: #f8f9fc;
+    padding: 12px 16px;
+    border: 1px #eff0f5 solid; }
+  .p-form-devise__checkbox {
+    margin: -12px auto 36px;
+    text-align: center; }
+  .p-form-devise__submit {
+    text-align: center; }
+  .p-form-devise__link > * {
+    margin-right: 16px; }
+    .p-form-devise__link > *:last-child {
+      margin-right: 0; }
 
 .p-header {
   display: flex;
@@ -1359,6 +1382,14 @@ input[type="checkbox"] {
   .p-mainvisual__logo {
     font-family: 'Quicksand', sans-serif;
     font-size: 38px; }
+
+.p-particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0; }
 
 .p-top-content {
   position: relative;

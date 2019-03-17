@@ -4,13 +4,67 @@
 }
 
 .p-form-devise {
+  position: relative;
+  padding: 0 96px;
+
+  &__description {
+    padding-top: 60px;
+    width: 680px;
+
+    h1 {
+      font-size: 24px;
+    }
+
+    ul {
+
+    }
+  }
+  
+  &__card {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, .16) 0px 0px 6px -2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 480px;
+    margin: 0 auto 120px;
+    padding: 36px;
+
+    &--sign-in {
+      position: absolute;
+      top: 50%;
+      right: 96px;
+      transform: translateY(-50%);
+    }
+  }
+
   &__heading {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 36px;
+  }
+
+  &__forms {
+    & > * {
+      &:last-child {
+        margin-bottom: 36px;
+      }
+    }
   }
 
   &__item {
-    margin-bottom: 42px;
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    width: 100%;
+    background-color: #f8f9fc;
+    padding: 12px 16px;
+    border: 1px #eff0f5 solid;
   }
 
   &__checkbox {
@@ -20,7 +74,6 @@
 
   &__submit {
     text-align: center;
-    margin-bottom: 68px;
   }
 
   &__link {

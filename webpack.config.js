@@ -10,6 +10,7 @@ const paths = {
 
 const entry = {
   index: path.join(paths.entry, 'index.js'),
+  particle: path.join(paths.entry, 'particle.js'),
   app: path.join(paths.entry, 'mypage/app.jsx'),
 };
 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LEAN CAMP</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+  <body>
+    <%= yield %>
+    <footer class='p-footer'>
+      <div class='p-copyright'>
+        <small class='p-copyright__text'>© LEAN CAMP</small>
+      </div>
+    <footer>
+    <%= javascript_include_tag 'particle' %>
+  </body>
+</html>

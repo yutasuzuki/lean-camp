@@ -11,7 +11,7 @@ body {
   background-color: #f2f3f6;
 }
 
-$blue : #36bbe7;
+$blue: #36bbe7;
 
 /* Radio ---------------------------------------------------*/
 input[type="radio"] {
@@ -29,7 +29,7 @@ display: none;
     content: "";
     border-radius: 17px;
     vertical-align: middle;
-    border: 2px solid #dddddd;
+    border: 2px solid #ddd;
     background-color: #f0f0f0;
     margin: -2px 5px 0 0;
     transition: .1s;
