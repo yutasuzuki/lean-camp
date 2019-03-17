@@ -160,6 +160,7 @@ class Item extends Component {
   onClickDelete() {
     this.setState({show: false});
     this.props.deleteProject({ type: this.props.type, id: this.props.value.id });
+    this.setState({deleteModal: false});
   }
 
   onShowDeleteModal() {
