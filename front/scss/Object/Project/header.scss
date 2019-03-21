@@ -58,15 +58,14 @@
     }
   }
 
-  &__signout {
+  &__anchor {
     font-weight: bold;
-  }
+    cursor: pointer;
 
-  &__signin {
     &:hover {
       opacity: .75;
     }
-  }
+  } 
 
   &__signup {
     font-family: 'Raleway', sans-serif;

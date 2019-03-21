@@ -2069,10 +2069,11 @@ input[type="checkbox"] {
     font-weight: bold; }
     .p-header__nav > *:hover {
       color: #273444; }
-  .p-header__signout {
-    font-weight: bold; }
-  .p-header__signin:hover {
-    opacity: .75; }
+  .p-header__anchor {
+    font-weight: bold;
+    cursor: pointer; }
+    .p-header__anchor:hover {
+      opacity: .75; }
   .p-header__signup {
     font-family: 'Raleway', sans-serif;
     padding: 6px 15px 5px;
