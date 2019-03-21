@@ -1988,6 +1988,21 @@ input[type="checkbox"] {
       letter-spacing: .05em;
       font-weight: lighter;
       font-family: 'Quicksand', sans-serif; }
+    .p-form-devise__description ul {
+      padding: 24px 36px;
+      background-color: #fefeff;
+      list-style: none; }
+      .p-form-devise__description ul li {
+        margin-bottom: 1.2em;
+        vertical-align: baseline; }
+        .p-form-devise__description ul li:last-child {
+          margin-bottom: 0; }
+        .p-form-devise__description ul li::before {
+          font-family: 'Icons';
+          content: "";
+          font-size: 20px;
+          color: #eeee18;
+          margin-right: 8px; }
   .p-form-devise__card {
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 6px -2px;

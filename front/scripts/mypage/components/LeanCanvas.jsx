@@ -206,18 +206,12 @@ class LeanCanvas extends Component {
           </a>
           <BtnSave onClick={this.onSave.bind(this)}>SAVE</BtnSave>
         </FooterSticky>
-        <Toast />
+        <ToastContainer />
       </div>
     )
   }
 }
 
-const Main = styled.main`
-  margin: 80px 3vw 152px;
-`
-const Toast = styled(ToastContainer)`
-  color: #fff !important;
-`
 const FooterSticky = styled.div`
   position: fixed;
   bottom: 0;
