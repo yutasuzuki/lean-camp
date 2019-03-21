@@ -43,11 +43,7 @@
     <p class="c-box--alert"><%= alert %></p>
     -->
     <%= yield %>
-    <footer class='p-footer'>
-      <div class='p-copyright'>
-        <small class='p-copyright__text'>© LEAN CAMP</small>
-      </div>
-    <footer>
+    <%= render :partial => 'layouts/footer' %>
     <%= javascript_include_tag 'index' %>
     <%= javascript_include_tag 'particle' %>
   </body>

@@ -1,0 +1,4 @@
+@mixin icon-font($icon) {
+  font-family: 'Icons';
+  content: $icon;
+}

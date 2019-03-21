@@ -1,8 +1,37 @@
 .p-footer {
-  position: relative;
-  background-color: #c5c5c5;
-  margin-top: 80px;
-  z-index: 1;
+  background-color: rgba(251, 251, 251, .96);
+  padding: 48px 3vw 12px;
+  border-top: 1px #ccc solid;
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color: $text-color-primary;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: $text-color-primary;
+      text-decoration: none;
+    }
+  }
+
+  &__logo-svg {
+    position: relative;
+    top: -2px;
+    width: 26px;
+    margin-right: 8px;
+
+    path {
+      fill: #273444
+    }   
+  }
 
   &__nav {
     display: flex;

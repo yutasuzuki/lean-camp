@@ -5,14 +5,23 @@
 
 .p-form-devise {
   position: relative;
-  padding: 0 96px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 96px;
+  margin-bottom: 120px;
 
   &__description {
-    padding-top: 60px;
     width: 680px;
 
     h1 {
-      font-size: 24px;
+      display: inline-block;
+      font-size: 36px;
+      font-weight: bold; 
+      margin-top: 0;
+      margin-bottom: 24px;
+      letter-spacing: .05em;
+      font-weight: lighter;
+      font-family: 'Quicksand', sans-serif;
     }
 
     ul {
@@ -26,20 +35,17 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 480px;
-    margin: 0 auto 120px;
+    margin: 0 auto;
     padding: 36px;
 
-    &--sign-in {
-      position: absolute;
-      top: 50%;
-      right: 96px;
-      transform: translateY(-50%);
+    &--admin {
+      margin-bottom: 24px;
     }
   }
 
   &__heading {
     text-align: center;
-    margin-bottom: 36px;
+    margin: 0 0 36px;
   }
 
   &__forms {
@@ -77,10 +83,16 @@
   }
 
   &__link {
-    & > * {
-      margin-right: 16px;
-      &:last-child {
-        margin-right: 0;
+    margin-top: 36px;
+    text-align: center;
+    font-size: 12px;
+
+    a {
+      font-family: 'Raleway', sans-serif;
+      font-weight: bold;
+
+      &:hover {
+        opacity: .75;
       }
     }
   }

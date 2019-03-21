@@ -1,7 +1,10 @@
 @import "setting";
+@import "mixin";
 @import "Foundation/sanitize";
 @import "Foundation/reset";
 @import "Foundation/base";
+
+@import "../../node_modules/open-iconic/font/css/open-iconic.scss";
 
 @import 'Layout/*';
 

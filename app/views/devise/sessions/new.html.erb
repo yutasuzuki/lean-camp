@@ -1,40 +1,47 @@
-<main class='l-main-devise'>
+<main class='l-main-devise l-container '>
   <div class='p-form-devise'>
     <div class='p-form-devise__description'>
-      <h1>LEAN CAMPにサインインして、あなたのアイデアをカタチにしましょう！</h1>
+      <h1>LEAN CAMPにサインインして<br>アイデアを"カタチ"にしましょう！</h1>
       <%= image_tag('lean-camp-mainvisual.png', :class => 'u-width--full') %>
     </div>
-    <div class='p-form-devise__card p-form-devise__card--sign-in'>
-      <div class='p-form-devise__heading'>
-        <h2 class='c-heading--border'>SIGN IN</h2>
+    <div>
+      <div class='p-form-devise__card p-form-devise__card--admin'>
+        <div class='p-form-devise__heading'>
+          <h2 class='c-heading--border'>SIGN IN</h2>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class='p-form-devise__forms'>
+            <div class='p-form-devise__item'>
+              <%= f.label :email, class: 'p-form-devise__label' %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'p-form-devise__input' %>
+            </div>
+
+            <div class='p-form-devise__item'>
+            <%= f.label :password, class: 'p-form-devise__label' %>
+            <%= f.password_field :password, autocomplete: "off", class: 'p-form-devise__input' %>
+            </div>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class='p-form-devise__checkbox'>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class='p-form-devise__submit'>
+            <%= f.submit 'SIGN IN', class: 'c-btn--primary c-btn--large' %>
+          </div>
+        <% end %>
+        <div class='p-form-devise__link'>
+          アカウントを新規作成しますか？ <%= link_to "SIGN UP", new_user_registration_path %>
+        </div>
       </div>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
-
-        <div class='p-form-devise__forms'>
-          <div class='p-form-devise__item'>
-            <%= f.label :email, class: 'p-form-devise__label' %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'p-form-devise__input' %>
-          </div>
-
-          <div class='p-form-devise__item'>
-          <%= f.label :password, class: 'p-form-devise__label' %>
-          <%= f.password_field :password, autocomplete: "off", class: 'p-form-devise__input' %>
-          </div>
-        </div>
-
-        <% if devise_mapping.rememberable? -%>
-          <div class='p-form-devise__checkbox'>
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end -%>
-
-        <div class='p-form-devise__submit'>
-          <%= f.submit 'SIGN IN', class: 'c-btn--primary c-btn--large' %>
-        </div>
-      <% end %>
+      <div class='p-form-devise__link u-text--right'>
+        <%= link_to "パスワードをお忘れの場合", new_user_password_path %>
+      </div>
     </div>
-    <%= render "devise/shared/links" %>
   </div>
 </main>
