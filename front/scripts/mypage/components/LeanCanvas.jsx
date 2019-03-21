@@ -6,6 +6,7 @@ import axios from 'axios';
 import TextareaAutoHeight from './TextareaAutoHeight';
 import Loader from './Loader';
 import { IoIosArrowBack } from 'react-icons/io';
+import { style } from '../constants';
 
 class LeanCanvas extends Component {
   constructor(props) {
@@ -56,13 +57,7 @@ class LeanCanvas extends Component {
     axios.post('/api/lean_canvas', this.state).then(({ data }) => {
       const state = Object.assign({}, data, { loaded: true });
       this.setState(state);
-      toast.success('保存しました', {
-        position: 'top-right',
-        autoClose: 4000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
+      toast.success('保存しました', style.Toastify.success);
     });
   }
 

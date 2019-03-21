@@ -2158,6 +2158,14 @@ input[type="checkbox"] {
   bottom: 0;
   z-index: 0; }
 
+.p-toastify--success {
+  background-color: #14c078 !important; }
+
+.p-toastify__text {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none; }
+
 .p-top-content {
   position: relative;
   z-index: 1;

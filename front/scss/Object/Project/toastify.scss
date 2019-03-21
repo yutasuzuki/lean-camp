@@ -1,0 +1,11 @@
+.p-toastify {
+  &--success {
+    background-color: #14c078 !important;
+  }
+
+  &__text {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
