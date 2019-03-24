@@ -85,9 +85,10 @@ class Top extends Component {
         {/* { companies.map(company => company ) } */}
 
         <List>
-          {this.props.projects.list.map((value, index) => (
-            <Item updateProject={this.onUpdateProject.bind(this)} deleteProject={this.onDeleteProject.bind(this)} value={value} key={index} />
-          ))}
+          {this.props.projects.list.map((value, index) => {
+            console.log(value);
+            return <Item updateProject={this.onUpdateProject.bind(this)} deleteProject={this.onDeleteProject.bind(this)} value={value} key={index} />
+          })}
         </List>
 
         <Modal
@@ -112,8 +113,12 @@ class Item extends Component {
       show: false,
       deleteModal: false,
       editModal: false,
-      name: this.props.value.name,
+      name: '',
     }
+  }
+
+  componentDidMount() {
+    this.setState({ name: this.props.value.name });
   }
 
   onShowMenu(e) {
@@ -186,7 +191,7 @@ class Item extends Component {
           style={ModalStyles}
           contentLabel="Create Project Modal">
           <ModalInner>
-            <Input type='text' value={this.state.name} onChange={this.onEditProjectName.bind(this)} placeholder='Awesome Project' />
+            <Input type='text' value={this.props.value.name} onChange={this.onEditProjectName.bind(this)} placeholder='Awesome Project' />
             <Btn type='text' onClick={ this.onProjectNameUpdate.bind(this) }>UPDATE</Btn>
           </ModalInner>
         </Modal>

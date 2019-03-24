@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions';
 
 
-
 export const GET_PROJECT = 'GET_PROJECT';
 export const getProject = createAction(GET_PROJECT);
 

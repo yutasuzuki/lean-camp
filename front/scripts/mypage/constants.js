@@ -8,6 +8,6 @@ export const style = {
       pauseOnHover: true,
       className: 'p-toastify--success',
       bodyClassName: 'p-toastify__text',
-    }
-  }
-}
+    },
+  },
+};

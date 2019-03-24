@@ -4,9 +4,7 @@ import component from '../components/Top';
 import { fetchProjects } from '../actions/project';
 import { fetchUser } from '../actions/user';
 
-const mapStateToProps = state => {
-  return state
-};
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
   fetchProjects() {
