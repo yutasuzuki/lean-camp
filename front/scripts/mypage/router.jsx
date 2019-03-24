@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Top from './containers/top'
+import Top from './containers/Top'
 import LeanCanvas from './containers/LeanCanvas'
 import OKR from './containers/OKR'
 import Company from './containers/Company'

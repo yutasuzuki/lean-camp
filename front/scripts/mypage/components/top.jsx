@@ -22,10 +22,7 @@ class Top extends Component {
   constructor(props) {
     super(props);
     props.fetchUser();
-    axios.get('/api/project').then(({ data }) => {
-      console.log(data)
-      this.props.onGetProjects(data);
-    });
+    props.fetchProjects();
     this.state = {
       tabs: [],
       modal: false,
