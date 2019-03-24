@@ -53,27 +53,19 @@ class Top extends Component {
       id: this.state.project.id,
       name: this.state.project.name,
     }
-    const response = await axios.post('/api/project/', params);
-    console.log(response);
-    axios.get('/api/project').then(({ data }) => {
-      console.log(data)
-      this.props.onGetProjects(data);
-    });
+    await axios.post('/api/project/', params);
+    this.props.fetchProjects();
     this.closeModal();
   }
 
   async onDeleteProject(item) {
     await axios.delete(`/api/project/${item.id}`);
-    axios.get('/api/project').then(({ data }) => {
-      this.props.onGetProjects(data);
-    });
+    this.props.fetchProjects();
   }
 
   async onUpdateProject(item) {
     await axios.patch(`/api/project/${item.id}`, item);
-    axios.get('/api/project').then(({ data }) => {
-      this.props.onGetProjects(data);
-    });
+    this.props.fetchProjects();
   }
 
   render() {
