@@ -21,9 +21,7 @@ const ModalStyles = {
 class Top extends Component {
   constructor(props) {
     super(props);
-    axios.get('/api/user').then(({ data }) => {
-      this.props.onGetMe(data);
-    });
+    props.fetchUser();
     axios.get('/api/project').then(({ data }) => {
       console.log(data)
       this.props.onGetProjects(data);

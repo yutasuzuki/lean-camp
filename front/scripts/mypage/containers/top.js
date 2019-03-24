@@ -1,17 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import component from '../components/top';
-import { getMe } from '../actions/user';
 import { getProjects } from '../actions/project';
+import { fetchUser } from '../actions/user';
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => {
+  console.log('state', state); 
+  return state
+};
 
 const mapDispatchToProps = dispatch => ({
-  onGetMe(state) {
-    dispatch(getMe(state));
-  },
   onGetProjects(state) {
     dispatch(getProjects(state));
+  },
+  fetchUser(state) {
+    dispatch(fetchUser())
   },
 });
 

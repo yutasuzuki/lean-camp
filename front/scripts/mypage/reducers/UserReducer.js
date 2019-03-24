@@ -1,13 +1,12 @@
-import { GET_ME } from '../actions/user';
+import { FETCH_USER_FULFILLED } from '../actions/user';
 
-const UserReducer = (state = {}, action) => {
+const countReducer = (state = {}, action) => {
   switch (action.type) {
-    case GET_ME:
-      return state = action.payload;
-      break;
+    case FETCH_USER_FULFILLED:
+      return action.payload;
     default:
       return state;
   }
 };
 
-export default UserReducer;
+export default countReducer;

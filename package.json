@@ -50,9 +50,10 @@
     "react-toastify": "^4.0.1",
     "redux": "^4.0.0",
     "redux-actions": "^2.3.2",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.4.0",
+    "rxjs-compat": "^6.4.0",
     "sanitize.css": "^5.0.0",
-    "slate": "^0.33.6",
-    "slate-react": "^0.12.6",
     "styled-components": "^3.3.0"
   },
   "engines": {

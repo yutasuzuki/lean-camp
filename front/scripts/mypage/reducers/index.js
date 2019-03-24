@@ -4,8 +4,7 @@ import LeanCanvasReducer from './leanCanvasReducer';
 import CompanyReducer from './CompanyReducer';
 import ProjectReducer from './ProjectReducer';
 
-
-const reducers = combineReducers({
+export const reducers = combineReducers({
   user: UserReducer,
   projects: ProjectReducer,
   leanCanvas: LeanCanvasReducer,

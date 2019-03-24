@@ -577,7 +577,7 @@ input[type="checkbox"] {
       font-family: 'Icons';
       content: "";
       position: absolute;
-      top: 6px;
+      top: 4px;
       left: -12px;
       width: 24px;
       height: 24px;
@@ -587,6 +587,7 @@ input[type="checkbox"] {
     input[type="checkbox"] + label::after {
       content: '';
       position: absolute;
+      top: -2px;
       left: -12px;
       display: inline-block;
       width: 24px;
@@ -2031,7 +2032,9 @@ input[type="checkbox"] {
     border: 1px #eff0f5 solid; }
   .p-form-devise__checkbox {
     margin: -12px auto 36px;
-    text-align: center; }
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold; }
   .p-form-devise__submit {
     text-align: center; }
   .p-form-devise__link {
