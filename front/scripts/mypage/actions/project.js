@@ -11,6 +11,13 @@ export const createProjectFulfilled = createAction(CREATE_PROJECT_FULFILLED);
 export const CREATE_PROJECT_FAILED = 'CREATE_PROJECT_FAILED';
 export const createProjectFailed = createAction(CREATE_PROJECT_FAILED);
 
+export const UPDATE_PROJECT = 'UPDATE_PROJECT';
+export const updateProject = createAction(UPDATE_PROJECT);
+export const UPDATE_PROJECT_FULFILLED = 'UPDATE_PROJECT_FULFILLED';
+export const updateProjectFulfilled = createAction(UPDATE_PROJECT_FULFILLED);
+export const UPDATE_PROJECT_FAILED = 'UPDATE_PROJECT_FAILED';
+export const updateProjectFailed = createAction(UPDATE_PROJECT_FAILED);
+
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const fetchProjects = createAction(FETCH_PROJECTS);
 export const FETCH_PROJECTS_FULFILLED = 'FETCH_PROJECTS_FULFILLED';

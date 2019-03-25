@@ -8,10 +8,7 @@ import {
 
 const createProjectEpic = action$ => action$.pipe(
   ofType(CREATE_PROJECT),
-  flatMap(({ payload }) => {
-    console.log('payload', payload)
-    return axios.post('/api/project', payload)
-  }),
+  flatMap(({ payload }) => axios.post('/api/project', payload)),
   map(res => createProjectFulfilled(res.data)),
 );
 
