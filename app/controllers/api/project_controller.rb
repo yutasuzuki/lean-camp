@@ -16,8 +16,7 @@ class Api::ProjectController < ApplicationController
     project.user_id = current_user.id
     project.slug = SecureRandom.urlsafe_base64
     project.save
-    logger.debug project.inspect
-    render json: params
+    render json: project
   end
 
   def show

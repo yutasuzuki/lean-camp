@@ -53,8 +53,8 @@ class Top extends Component {
       id: this.state.project.id,
       name: this.state.project.name,
     }
-    await axios.post('/api/project/', params);
-    this.props.fetchProjects();
+    // await axios.post('/api/project/', params);
+    this.props.createProject(params);
     this.closeModal();
   }
 
@@ -86,7 +86,6 @@ class Top extends Component {
 
         <List>
           {this.props.projects.list.map((value, index) => {
-            console.log(value);
             return <Item updateProject={this.onUpdateProject.bind(this)} deleteProject={this.onDeleteProject.bind(this)} value={value} key={index} />
           })}
         </List>

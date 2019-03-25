@@ -4,8 +4,16 @@ import { createAction } from 'redux-actions';
 export const GET_PROJECT = 'GET_PROJECT';
 export const getProject = createAction(GET_PROJECT);
 
+export const CREATE_PROJECT = 'CREATE_PROJECT';
+export const createProject = createAction(CREATE_PROJECT);
+export const CREATE_PROJECT_FULFILLED = 'CREATE_PROJECT_FULFILLED';
+export const createProjectFulfilled = createAction(CREATE_PROJECT_FULFILLED);
+export const CREATE_PROJECT_FAILED = 'CREATE_PROJECT_FAILED';
+export const createProjectFailed = createAction(CREATE_PROJECT_FAILED);
+
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const fetchProjects = createAction(FETCH_PROJECTS);
-
 export const FETCH_PROJECTS_FULFILLED = 'FETCH_PROJECTS_FULFILLED';
 export const fetchProjectsFulfilled = createAction(FETCH_PROJECTS_FULFILLED);
+export const FETCH_PROJECTS_FAILED = 'FETCH_PROJECTS_FAILED';
+export const fetchProjectsFailed = createAction(FETCH_PROJECTS_FAILED);
