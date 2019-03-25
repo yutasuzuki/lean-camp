@@ -26,13 +26,13 @@ class Api::ProjectController < ApplicationController
   def destroy
     project = Project.find(params[:id])
     project.update_attributes(deleted_at: Time.now)
-    render json: params
+    render json: project
   end
 
   def update
     project = @project.find(params[:id])
     project.update_attributes(name: params[:name])
-    render json: params
+    render json: project
   end
 
   private

@@ -15,9 +15,6 @@ const mapDispatchToProps = dispatch => ({
   },
   createProject(params) {
     dispatch(createProject(params));
-  },
-  updateProject() {
-    console.log(111111);
   }
 });
 

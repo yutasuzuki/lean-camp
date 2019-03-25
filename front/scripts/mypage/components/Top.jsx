@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ReactModal, ReactModalInner } from '../shared/ReactModal';
 import { BtnPrimary } from '../shared/Btn';
-import ProjectList from './ProjectList';
+import ProjectList from '../containers/ProjectList';
 import Loader from './Loader';
 
 class Top extends Component {
@@ -42,7 +42,6 @@ class Top extends Component {
       id: this.state.project.id,
       name: this.state.project.name,
     }
-    // await axios.post('/api/project/', params);
     this.props.createProject(params);
     this.closeModal();
   }
