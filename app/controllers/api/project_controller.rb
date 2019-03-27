@@ -30,6 +30,7 @@ class Api::ProjectController < ApplicationController
   end
 
   def update
+    puts params
     project = @project.find(params[:id])
     project.update_attributes(name: params[:name])
     render json: project

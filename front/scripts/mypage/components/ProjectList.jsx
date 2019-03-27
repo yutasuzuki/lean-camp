@@ -10,6 +10,7 @@ import { TextStrong } from '../shared/Text';
 class ProjectList extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state  = {
       show: false,
       deleteModal: false,
@@ -19,10 +20,15 @@ class ProjectList extends Component {
   }
 
   componentDidMount() {
-    this.setState({ name: this.props.value.name });
+    console.log('componentDidMount');
+  }
+
+  componentDidUpdate() {
+    // this.setState({ name: this.props.value.name });
   }
 
   onShowMenu(e) {
+    this.props.selectProject(this.props.value.id);
     this.setState({show: !this.state.show});
   }
 
@@ -35,15 +41,17 @@ class ProjectList extends Component {
     this.setState({editModal: false});
   }
 
-  onProjectNameUpdate() {
-    this.props.updateProject();
-    this.setState({editModal: false});
+  onEditProjectName(e) {
+    this.props.editProjectName(e.target.value);
   }
 
-  onEditProjectName(e) {
-    this.setState({ 
-      name: e.target.value
-    });
+  onUpdateProjectName() {
+    const params = {
+      id: this.props.value.id,
+      name: this.props.projects.item.name,
+    };
+    this.props.updateProjectName(params);
+    this.setState({editModal: false});
   }
 
   onClickShare() {
@@ -91,8 +99,8 @@ class ProjectList extends Component {
           onRequestClose={this.onCloseEditModal.bind(this)}
           contentLabel="Create Project Modal">
           <ReactModalInner>
-            <Input type='text' value={this.props.value.name} onChange={this.onEditProjectName.bind(this)} placeholder='Awesome Project' />
-            <BtnPrimary type='text' onClick={ this.onProjectNameUpdate.bind(this) }>UPDATE</BtnPrimary>
+            <Input type='text' value={this.props.projects.item.name || ''} onChange={this.onEditProjectName.bind(this)} placeholder='Awesome Project' />
+            <BtnPrimary type='text' onClick={ this.onUpdateProjectName.bind(this) }>UPDATE</BtnPrimary>
           </ReactModalInner>
         </ReactModal>
 

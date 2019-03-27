@@ -11,6 +11,12 @@ export const createProjectFulfilled = createAction(CREATE_PROJECT_FULFILLED);
 export const CREATE_PROJECT_FAILED = 'CREATE_PROJECT_FAILED';
 export const createProjectFailed = createAction(CREATE_PROJECT_FAILED);
 
+export const SELECT_PROJECT = 'SELECT_PROJECT';
+export const selectProject = createAction(SELECT_PROJECT);
+
+export const EDIT_PROJECT_NAME = 'EDIT_PROJECT_NAME';
+export const editProjectName = createAction(EDIT_PROJECT_NAME);
+
 export const UPDATE_PROJECT = 'UPDATE_PROJECT';
 export const updateProject = createAction(UPDATE_PROJECT);
 export const UPDATE_PROJECT_FULFILLED = 'UPDATE_PROJECT_FULFILLED';
