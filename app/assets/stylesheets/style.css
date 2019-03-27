@@ -1328,7 +1328,7 @@ input[type="checkbox"] {
   content: '\e0de'; }
 
 .l-container {
-  width: 1248px;
+  width: 1160px;
   margin-left: auto;
   margin-right: auto; }
 
@@ -2132,9 +2132,7 @@ input[type="checkbox"] {
     bottom: 0;
     z-index: 2;
     display: flex;
-    padding-top: 152px;
-    margin-left: 96px;
-    margin-right: 96px; }
+    padding-top: 152px; }
   .p-mainvisual__explanation {
     flex: 4; }
   .p-mainvisual__artwork {
