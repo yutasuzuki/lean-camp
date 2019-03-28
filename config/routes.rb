@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'projects/name'
-  get 'projects/slug'
   root to: 'top#index'
 
   get 'mypage', to: 'mypage#index'
@@ -9,10 +7,13 @@ Rails.application.routes.draw do
 
   get 'users', to: 'users#index'
   get 'users/show'
-  devise_for :users
+
+  get 'privacy', to: 'privacy#index'
+  get 'term', to: 'term#index'
 
   get 'playground/lean_canvas'
 
+  devise_for :users
   devise_for :models
 
   devise_scope :user do

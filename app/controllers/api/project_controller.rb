@@ -10,7 +10,6 @@ class Api::ProjectController < ApplicationController
   end
 
   def create
-    puts 'create'
     project = Project.new
     project.name = params[:name]
     project.user_id = current_user.id
@@ -30,7 +29,6 @@ class Api::ProjectController < ApplicationController
   end
 
   def update
-    puts params
     project = @project.find(params[:id])
     project.update_attributes(name: params[:name])
     render json: project

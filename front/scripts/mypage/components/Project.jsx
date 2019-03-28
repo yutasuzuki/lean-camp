@@ -116,7 +116,7 @@ const ProjectNavigation = styled.nav`
     font-weight: bold;
     text-decoration: none;
     padding: 2px 4px 12px;
-    opacity: .75;
+    opacity: .25;
     cursor: pointer;
 
     &:hover:not(.active) {
