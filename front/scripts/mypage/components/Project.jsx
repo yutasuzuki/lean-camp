@@ -25,7 +25,6 @@ class ProjectComponent extends Component {
   async componentDidMount() {
     if (this.props.match.params.id) {
       const { data } = await axios.get(`/api/project/${this.props.match.params.id}`);
-      console.log(data);
       const state = Object.assign({}, this.state, { 
         project: data,
         loaded: true,

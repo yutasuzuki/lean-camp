@@ -28,14 +28,13 @@ class LeanCanvas extends Component {
       revenue: '',
       service_name: '',
       loaded: false,
-    }
+    };
   }
 
   componentDidMount() {
     // TODO: ここの処理はReduxに写す
     if (this.props.match.params.project_id) {
       axios.get(`/api/lean_canvas/${this.props.match.params.project_id}`).then(({ data }) => {
-        console.log(data);
         const state = Object.assign({}, data, { loaded: true });
         this.setState(state);
       });
