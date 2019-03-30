@@ -20,6 +20,12 @@ class ProjectComponent extends Component {
       },
       loaded: false,
     };
+
+    if (this.props.match.params.id) {
+      this.props.fetchProject({ id: this.props.match.params.id });
+    } else {
+      this.props.history.push('/404')
+    }
   }
 
   async componentDidMount() {
@@ -58,6 +64,7 @@ class ProjectComponent extends Component {
           <Route path={'/project/:project_id/lean_canvas'} component={LeanCanvas}/>
           <Route path={'/project/:project_id/experiment_board'} component={ExperimentBoard}/>
           <Route path={`${this.props.match.url}/page3`} component={page3}/>
+          <Route path={`${this.props.match.url}/`} component={topPage}/>
           <Route path={`${this.props.match.url}/`} component={topPage}/>
         </Switch>
       </Main>

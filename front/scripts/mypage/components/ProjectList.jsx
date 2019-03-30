@@ -10,8 +10,7 @@ import { TextStrong } from '../shared/Text';
 class ProjectList extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
-    this.state  = {
+    this.state = {
       show: false,
       deleteModal: false,
       editModal: false,
@@ -30,6 +29,10 @@ class ProjectList extends Component {
   onShowMenu(e) {
     this.props.selectProject(this.props.value.id);
     this.setState({show: !this.state.show});
+  }
+
+  onCloseMenu() {
+    this.setState({show: false});
   }
 
   onShowEditModal() {
@@ -92,6 +95,7 @@ class ProjectList extends Component {
               <MenuDelete onClick={this.onShowDeleteModal.bind(this)}>DELETE</MenuDelete>
             </MenuItem>
           </Menu>
+          <ListItemMenuOverlay onClick={this.onCloseMenu.bind(this)} className={this.state.show ? 'is-show': ''}/>
         </ListItemMenu>
 
         <ReactModal
@@ -170,7 +174,7 @@ const Menu = styled.ul`
   padding: 16px 32px;
   box-shadow: 0 0 6px -2px #000;
   border-radius: 6px;
-  z-index: 1;
+  z-index: 2;
 
   &.is-show {
     display: block;
@@ -213,6 +217,20 @@ const MenuShare = styled(MenuItemAnchor)`
     background-color: #2a85d7;
   } */
 `
+
+const ListItemMenuOverlay = styled.div`
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  &.is-show {
+    display: block;
+  }
+`;
 
 const Input = styled.input`
   width: 392px;

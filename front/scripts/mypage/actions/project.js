@@ -1,8 +1,11 @@
 import { createAction } from 'redux-actions';
 
-
-export const GET_PROJECT = 'GET_PROJECT';
-export const getProject = createAction(GET_PROJECT);
+export const FETCH_PROJECT = 'FETCH_PROJECT';
+export const fetchProject = createAction(FETCH_PROJECT);
+export const FETCH_PROJECT_FULFILLED = 'FETCH_PROJECT_FULFILLED';
+export const fetchProjectFulfilled = createAction(FETCH_PROJECT_FULFILLED);
+export const FETCH_PROJECT_FAILED = 'FETCH_PROJECT_FAILED';
+export const fetchProjectFailed = createAction(FETCH_PROJECT_FAILED);
 
 export const CREATE_PROJECT = 'CREATE_PROJECT';
 export const createProject = createAction(CREATE_PROJECT);

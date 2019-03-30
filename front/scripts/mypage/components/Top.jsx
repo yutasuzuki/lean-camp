@@ -13,13 +13,18 @@ class Top extends Component {
     props.fetchUser();
     props.fetchProjects();
     this.state = {
-      tabs: [],
       modal: false,
       project: {
         id: null,
         name: '',
       },
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.projects.error.status) {
+      console.error('!! ERROR !!');
+    }
   }
 
   openModal() {
@@ -48,11 +53,6 @@ class Top extends Component {
 
   async onDeleteProject(item) {
     await axios.delete(`/api/project/${item.id}`);
-    this.props.fetchProjects();
-  }
-
-  async onUpdateProject(item) {
-    await axios.patch(`/api/project/${item.id}`, item);
     this.props.fetchProjects();
   }
 

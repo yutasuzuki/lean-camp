@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 class CompanyComponent extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
 
     this.state = {
       company: {
@@ -18,7 +17,7 @@ class CompanyComponent extends Component {
   async componentWillMount() {
     const id = this.props.match.params.id;
     const response = await axios.get('/api/company', { params: { id }}).catch((err) => {
-      this.props.history.push('/');
+      // this.props.history.push('/');
     });
     if (response) {
       this.setState({ company: response.data });
