@@ -5,6 +5,7 @@ import { IoIosMore } from 'react-icons/io';
 import { ReactModal, ReactModalInner, ReactModalBtnContainer } from '../shared/ReactModal';
 import { BtnPrimary, BtnCancel, BtnDelete } from '../shared/Btn';
 import { TextStrong } from '../shared/Text';
+import Loader from './Loader';
 
 
 class ProjectList extends Component {
@@ -103,7 +104,7 @@ class ProjectList extends Component {
           onRequestClose={this.onCloseEditModal.bind(this)}
           contentLabel="Create Project Modal">
           <ReactModalInner>
-            <Input type='text' value={this.props.projects.item.name || ''} onChange={this.onEditProjectName.bind(this)} placeholder='Awesome Project' />
+            <Input type='text' onChange={this.onEditProjectName.bind(this)} placeholder='Awesome Project' />
             <BtnPrimary type='text' onClick={ this.onUpdateProjectName.bind(this) }>UPDATE</BtnPrimary>
           </ReactModalInner>
         </ReactModal>
