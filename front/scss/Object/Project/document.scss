@@ -1,16 +1,29 @@
 .p-document {
   position: relative;
-  margin-top: 120px;
+  width: 1000px;
+  margin-top: 96px;
   margin-bottom: 120px;
-  padding: 36px 60px;
-  background-color: #fff;
+
+  section {
+    margin-bottom: 48px;
+
+    & > * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 
   h1 {
-
+    font-size: 24px;
+    margin-bottom: 36px;
   }
 
   h2 {
-
+    font-size: 18px;
+    margin-bottom: 24px;
+    padding-left: 12px;
+    border-left: 2px $border-color-primary solid;
   }
 
   h3 {
@@ -22,12 +35,21 @@
   }
 
   p {
-
+    margin-bottom: 12px;
   }
 
-  ul {
-    li {
+  ol {
+    margin-bottom: 24px;
+    padding-left: 32px;
 
+    ol {
+      margin-top: 12px;
+      padding-left: 16px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      line-height: 30px;
     }
   }
 }

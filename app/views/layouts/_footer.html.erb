@@ -1,6 +1,6 @@
 <footer class='p-footer'>
   <div class='p-footer__main'>
-    <a class='p-footer__logo' href='/'>
+    <%= link_to root_path, class: 'p-footer__logo' do %>
       <svg class='p-footer__logo-svg' viewBox='0 0 180 156'>
         <rect x='0' y='0' width='179.602' height='155.985' style='fill:none;'/>
         <path d='M91.757,9.858c1.374,-2.381 0.557,-5.43 -1.823,-6.804c-2.381,-1.375 -5.43,-0.558 -6.804,1.823l-81.033,140.353c-1.375,2.381 -0.558,5.429 1.823,6.804c2.381,1.374 5.429,0.557 6.804,-1.823l81.033,-140.353Z' />
@@ -12,7 +12,28 @@
         <path d='M100.521,155.12c2.749,0 4.981,-2.232 4.981,-4.981c0,-2.749 -2.232,-4.981 -4.981,-4.981l-40.792,0c-2.749,0 -4.981,2.232 -4.981,4.981c0,2.749 2.232,4.981 4.981,4.981l40.792,0Z' />
       </svg>
       LEAN CAMP
-    </a>
+    <% end %>
+    <nav class='p-footer__nav'>
+      <ul>
+        <li>
+          <%= link_to 'リーン・キャンバス', playground_lean_canvas_path %>
+        </li>
+        <li>
+          <%= link_to '新規登録', new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to 'ログイン', new_user_session_path %>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <%= link_to '利用規約', term_path %>
+        </li>
+        <li>
+          <%= link_to 'プライバシーポリシー', privacy_path %>
+        </li>
+      </ul>
+    </nav>
   </div>
   <div class='p-copyright'>
     <small class='p-copyright__text'>© LEAN CAMP</small>

@@ -6,7 +6,7 @@
   &__main {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   &__logo {
@@ -14,11 +14,32 @@
     font-weight: bold;
     color: $text-color-primary;
     text-decoration: none;
+    margin-right: 60px;
 
     &:hover,
     &:active {
       color: $text-color-primary;
       text-decoration: none;
+    }
+  }
+
+  &__nav {
+    ul {
+      padding: 0;
+      margin-right: 16px;
+ 
+      a {
+        display: inline-block;
+        font-family: 'Raleway', sans-serif;
+        font-size: 12px;
+        color: #5C6773;
+        text-decoration: none;
+        margin-right: 10px;
+        line-height: 1.5;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        vertical-align: top;
+      }
     }
   }
 
