@@ -29,13 +29,16 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          plugins: ['transform-react-jsx', 'transform-runtime'],
+          plugins: [
+            '@babel/plugin-transform-react-jsx', 
+            ['@babel/plugin-transform-runtime', {
+              'regenerator': true
+            }],
+          ],
           presets: [
-            [
-              'env', {'modules': false}
-            ],
-            'react'
-          ]
+            '@babel/preset-env',
+            '@babel/react'
+          ],
         }
       },
       {
