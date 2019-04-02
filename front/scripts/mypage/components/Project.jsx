@@ -13,33 +13,11 @@ const page3 = () => <div><h1>page3</h1>3枚目のページです</div>
 class ProjectComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tabs: [],
-      project: {
-        name: '',
-        slug: '',
-      },
-      loaded: false,
-    };
-
     if (this.props.match.params.id) {
       if (this.props.projects.item.id) return;
       this.props.fetchProject({ id: this.props.match.params.id });
     } else {
       this.props.history.push('/404')
-    }
-  }
-
-  async componentDidMount() {
-    if (this.props.match.params.id) {
-      const { data } = await axios.get(`/api/project/${this.props.match.params.id}`);
-      const state = Object.assign({}, this.state, { 
-        project: data,
-        loaded: true,
-      });
-      this.setState(state);
-    } else {
-      this.setState({ loaded: true });
     }
   }
 
