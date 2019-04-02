@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Switch, NavLink, Route} from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
-import LeanCanvas from '../containers/LeanCanvas'
-import ExperimentBoard from '../containers/ExperimentBoard'
+import LeanCanvas from '../containers/LeanCanvas';
+import ExperimentBoard from '../containers/ExperimentBoard';
+import Loader from './Loader';
 
 //ページの中身用のコンポーネントを作成
 const topPage = () => <div><h1>Dashboard</h1>ここがトップページです</div>
@@ -22,6 +23,7 @@ class ProjectComponent extends Component {
     };
 
     if (this.props.match.params.id) {
+      if (this.props.projects.item.id) return;
       this.props.fetchProject({ id: this.props.match.params.id });
     } else {
       this.props.history.push('/404')
@@ -42,10 +44,15 @@ class ProjectComponent extends Component {
   }
 
   render() {
+    const { id, name } = this.props.projects.item;
+    if (!id) {
+      return <Loader />
+    }
+
     return (
       <Main>
         <Project>
-          <ProjectName>{ this.state.project.name }</ProjectName>
+          <ProjectName>{ name }</ProjectName>
           <ProjectNavigation>
             <ul>
               <li >

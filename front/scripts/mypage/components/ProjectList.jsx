@@ -5,8 +5,6 @@ import { IoIosMore } from 'react-icons/io';
 import { ReactModal, ReactModalInner, ReactModalBtnContainer } from '../shared/ReactModal';
 import { BtnPrimary, BtnCancel, BtnDelete } from '../shared/Btn';
 import { TextStrong } from '../shared/Text';
-import Loader from './Loader';
-
 
 class ProjectList extends Component {
   constructor(props) {
@@ -34,6 +32,10 @@ class ProjectList extends Component {
 
   onCloseMenu() {
     this.setState({show: false});
+  }
+
+  onSelectProject() {
+    this.props.selectProject(this.props.value.id);
   }
 
   onShowEditModal() {
@@ -80,7 +82,7 @@ class ProjectList extends Component {
   render() {
     return (
       <ListItem>
-        <ListItemAnchor to={`/project/${this.props.value.id}`}>
+        <ListItemAnchor to={`/project/${this.props.value.id}`} onClick={this.onSelectProject.bind(this)}>
           <ListItemTitle>{this.props.value.name}</ListItemTitle>
         </ListItemAnchor>
         <ListItemMenu>

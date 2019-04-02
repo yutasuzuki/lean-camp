@@ -19,7 +19,7 @@ const createProjectEpic = action$ => action$.pipe(
 const fetchProjectEpic = action$ => action$.pipe(
   ofType(FETCH_PROJECT),
   mergeMap(({ payload }) => ajax.getJSON(`/api/project/${payload.id}`).pipe(
-    map(res => fetchProjectFulfilled(res.data)))
+    map(data => fetchProjectFulfilled(data)))
   )
 );
 

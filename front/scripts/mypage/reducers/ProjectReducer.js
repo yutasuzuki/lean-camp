@@ -10,6 +10,7 @@ import { sortUpdateAtDesc } from '../utils/sort'
 
 const initialState = { 
   item: {
+    id: null,
     name: '',
   },
   list: [],
@@ -27,6 +28,7 @@ const ProjectReducer = (state = initialState, action) => {
       break;
 
     case FETCH_PROJECT_FULFILLED:
+      console.log(action.payload);
       return Object.assign({}, state, { 
         item: action.payload,
       });
