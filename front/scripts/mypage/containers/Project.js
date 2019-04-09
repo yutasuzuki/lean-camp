@@ -2,12 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import component from '../components/Project';
 import { fetchProject } from '../actions/project';
+import { fetchLeanCanvas } from '../actions/leanCanvas';
 
 const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
-  fetchProject(payload) {
-    dispatch(fetchProject(payload));
+  fetchProject(params) {
+    dispatch(fetchProject(params));
+  },
+  fetchLeanCanvas(params) {
+    dispatch(fetchLeanCanvas(params));
   },
 });
 

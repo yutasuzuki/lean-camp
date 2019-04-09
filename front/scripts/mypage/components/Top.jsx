@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { BtnPrimary } from '../shared/Btn';
 import ProjectList from '../containers/ProjectList';
 import Loader from './Loader';
 
-class Top extends Component {
+class Top extends PureComponent {
   constructor(props) {
     super(props);
     props.fetchUser();

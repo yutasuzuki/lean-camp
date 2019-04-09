@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
@@ -8,7 +8,7 @@ import Loader from './Loader';
 import { IoIosArrowBack } from 'react-icons/io';
 import { style } from '../constants';
 
-class LeanCanvas extends Component {
+class LeanCanvas extends PureComponent {
   constructor(props) {
     super(props);
     this.state  = {

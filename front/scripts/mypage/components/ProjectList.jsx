@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { IoIosMore } from 'react-icons/io';
@@ -6,7 +6,7 @@ import { ReactModal, ReactModalInner, ReactModalBtnContainer } from '../shared/R
 import { BtnPrimary, BtnCancel, BtnDelete } from '../shared/Btn';
 import { TextStrong } from '../shared/Text';
 
-class ProjectList extends Component {
+class ProjectList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

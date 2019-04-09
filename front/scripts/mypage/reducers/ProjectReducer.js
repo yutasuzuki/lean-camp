@@ -4,7 +4,7 @@ import {
   UPDATE_PROJECT_FULFILLED, UPDATE_PROJECT_FAILED,
   EDIT_PROJECT_NAME,
   SELECT_PROJECT,
-  FETCH_PROJECT_FULFILLED 
+  FETCH_PROJECT_FULFILLED, FETCH_PROJECT_FAILED,
 } from '../actions/project';
 import { sortUpdateAtDesc } from '../utils/sort'
 
@@ -28,9 +28,17 @@ const ProjectReducer = (state = initialState, action) => {
       break;
 
     case FETCH_PROJECT_FULFILLED:
-      console.log(action.payload);
       return Object.assign({}, state, { 
         item: action.payload,
+      });
+      break;
+
+    case FETCH_PROJECT_FAILED:
+      console.log('!')
+      return Object.assign({}, state, {
+        error: {
+          status: action.payload.status,
+        }
       });
       break;
 

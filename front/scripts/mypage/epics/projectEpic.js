@@ -7,7 +7,7 @@ import {
   CREATE_PROJECT, createProjectFulfilled,
   FETCH_PROJECT, fetchProjectFulfilled,
   UPDATE_PROJECT, updateProjectFulfilled, updateProjectFailed,
-  FETCH_PROJECTS, fetchProjectsFulfilled,
+  FETCH_PROJECTS, fetchProjectsFulfilled, fetchProjectFailed,
 } from '../actions/project';
 
 const createProjectEpic = action$ => action$.pipe(
@@ -18,9 +18,12 @@ const createProjectEpic = action$ => action$.pipe(
 
 const fetchProjectEpic = action$ => action$.pipe(
   ofType(FETCH_PROJECT),
-  mergeMap(({ payload }) => ajax.getJSON(`/api/project/${payload.id}`).pipe(
-    map(data => fetchProjectFulfilled(data)))
-  )
+  mergeMap(({ payload }) => ajax.getJSON(`/api/project/${payload.id}`)
+    .pipe(
+      map(data => fetchProjectFulfilled(data)),
+      catchError(err => of(fetchProjectFailed(err)))
+    ),
+  ),
 );
 
 const updateProjectEpic = action$ => action$.pipe(

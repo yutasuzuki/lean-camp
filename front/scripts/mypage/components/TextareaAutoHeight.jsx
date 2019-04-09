@@ -17,8 +17,9 @@ class TextareaAutoHeight extends Component {
   }
 
   textAutoHeightHandler() {
-    this.style.height = '142px';
-    const lineHeight = parseInt(this.style.lineHeight.replace(/px/, ''));
+    console.log(this.style)
+    this.style.height = 0;
+    const lineHeight = parseInt(this.style.height.replace(/px/, ''));
     const doubleLineHeight = lineHeight * 2;
     let scrollHeight = parseInt(this.scrollHeight);
     if(scrollHeight < doubleLineHeight){

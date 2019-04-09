@@ -1,22 +1,33 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Switch, NavLink, Route} from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
 import LeanCanvas from '../containers/LeanCanvas';
 import ExperimentBoard from '../containers/ExperimentBoard';
+import CustomerJourneyMap from '../containers/CustomerJourneyMap';
 import Loader from './Loader';
 
 //ページの中身用のコンポーネントを作成
 const topPage = () => <div><h1>Dashboard</h1>ここがトップページです</div>
 const page3 = () => <div><h1>page3</h1>3枚目のページです</div>
 
-class ProjectComponent extends Component {
+class ProjectComponent extends PureComponent {
   constructor(props) {
     super(props);
     if (this.props.match.params.id) {
       if (this.props.projects.item.id) return;
-      this.props.fetchProject({ id: this.props.match.params.id });
+      const params = {
+        id: this.props.match.params.id
+      };
+      this.props.fetchProject(params);
+      this.props.fetchLeanCanvas(params);
     } else {
+      this.props.history.push('/404')
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.projects.error.status === 404) {
       this.props.history.push('/404')
     }
   }
@@ -42,14 +53,17 @@ class ProjectComponent extends Component {
               <li >
                 <NavLink to={`${this.props.match.url}/experiment_board`} activeClassName='active'>Experiment Board</NavLink>
               </li>
+              <li >
+                <NavLink to={`${this.props.match.url}/customer_journey_map`} activeClassName='active'>Customer Journey Map</NavLink>
+              </li>
             </ul>
           </ProjectNavigation>
         </Project>
         <Switch>
           <Route path={'/project/:project_id/lean_canvas'} component={LeanCanvas}/>
           <Route path={'/project/:project_id/experiment_board'} component={ExperimentBoard}/>
+          <Route path={'/project/:project_id/customer_journey_map'} component={CustomerJourneyMap}/>
           <Route path={`${this.props.match.url}/page3`} component={page3}/>
-          <Route path={`${this.props.match.url}/`} component={topPage}/>
           <Route path={`${this.props.match.url}/`} component={topPage}/>
         </Switch>
       </Main>

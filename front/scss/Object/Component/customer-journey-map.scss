@@ -1,0 +1,83 @@
+.c-customer-journey-map {
+  border-radius: 4px;
+
+  th {
+    padding: 10px;
+    font-size: 1vw;
+  }
+
+  td {
+    max-width: 420px;
+    min-width: 240px;
+    border: 4px solid #fff;
+    padding: 10px;
+  }
+
+  tr {
+    td {
+      &:nth-child(1n) {
+        background-color: rgba(38, 163, 255, .15);
+      }
+
+      &:nth-child(2n) {
+        background-color: rgba(19, 206, 102, .15);
+      }
+
+      &:nth-child(3n) {
+        background-color: rgba(255, 73, 219, .15);
+      }
+
+      &:nth-child(4n) {
+        background-color: rgba(175, 141, 209, .15);
+      }
+
+      &:nth-child(5n) {
+        background-color: rgba(145, 98, 191, .15);
+      }
+
+      &:nth-child(6n) {
+        background-color: rgba(255, 120, 73, .15);
+      }
+
+      &:nth-child(7n) {
+        background-color: rgba(255, 200, 44, .15);
+      }
+    }
+  }
+
+
+  &__columns {
+  }
+
+  &__feeling {
+  }
+
+  &__thinking {
+  }
+
+  &__doing {
+  }
+
+  &__touch-point {
+  }
+
+  &__label {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: #434343;
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    margin-top: 5px;
+    border: 0;
+    outline: 0;
+    resize: none;
+  }
+}

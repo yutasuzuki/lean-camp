@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import styled, { keyframes } from 'styled-components';
 
-class LoaderComponent extends Component {
+class LoaderComponent extends PureComponent {
   render() {
     return (
       <Wrapper>
