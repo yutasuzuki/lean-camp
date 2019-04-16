@@ -15,6 +15,10 @@
 
   tr {
     td {
+      min-height: 240px;
+      padding: 10px;
+      vertical-align: top;
+
       &:nth-child(1n) {
         background-color: rgba(38, 163, 255, .15);
       }
@@ -64,13 +68,13 @@
   &__label {
     position: relative;
 
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background-color: #434343;
-    }
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   width: 100px;
+    //   height: 100px;
+    //   background-color: #434343;
+    // }
   }
 
   &__textarea {

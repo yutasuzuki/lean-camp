@@ -55,73 +55,76 @@ class CustomerJourneyMap extends Component {
     }
 
     return (
-      <ContentScroller>
-        <table class='c-customer-journey-map'>
-          <tr>
-            <th>FEELING</th>
-            {this.state.data.map((value, index) => {
-              return (
-              <td class='c-customer-journey-map__feeling'>
-                <TextareaAutoHeight
-                  className='c-customer-journey-map__textarea'
-                  changeTextarea={this.onChangeHandler.bind(this)} 
-                  text={value.feeling.text}
-                />
-              </td>
-              )
-            })}
-          </tr>
-          <tr>
-            <th>THINKING</th>
-            {this.state.data.map((value, index) => {
-              return (
-              <td class='c-customer-journey-map__thinking'>
-                <TextareaAutoHeight
-                  className='c-customer-journey-map__textarea'
-                  changeTextarea={this.onChangeHandler.bind(this)} 
-                  text={value.thinking}
-                />
-              </td>
-              )
-            })}
-          </tr>
-          <tr>
-            <th>DOING</th>
-            {this.state.data.map((value, index) => {
-              return (
-              <td class='c-customer-journey-map__doing'>
-                <TextareaAutoHeight
-                  className='c-customer-journey-map__textarea'
-                  changeTextarea={this.onChangeHandler.bind(this)}
-                  text={value.doing}
-                />
-              </td>
-              )
-            })}
-          </tr>
-          <tr>
-            <th>TOUCHPOINT</th>
-            {this.state.data.map((value, index) => {
-              return (
-              <td class='c-customer-journey-map__touch-point'>
-                <TextareaAutoHeight
-                  className='c-customer-journey-map__textarea'
-                  changeTextarea={this.onChangeHandler.bind(this)}
-                  text={value.touchpoint}
-                />
-              </td>
-              )
-            })}
-          </tr>
-          <tr>
-            <th>TOUCHPOINT</th>
-            {this.state.data.map((value, index) => {
-              return (
-              <td class='c-customer-journey-map__label'></td>
-              )
-            })}
-          </tr>
-        </table>
+      <>
+        <ContentScroller>
+          <table class='c-customer-journey-map'>
+            <tr>
+              <th>FEELING</th>
+              {this.state.data.map((value, index) => {
+                return (
+                <td class='c-customer-journey-map__feeling'>
+                  <TextareaAutoHeight
+                    className='c-customer-journey-map__textarea'
+                    changeTextarea={this.onChangeHandler.bind(this)} 
+                    text={value.feeling.text}
+                  />
+                </td>
+                )
+              })}
+            </tr>
+            <tr>
+              <th>THINKING</th>
+              {this.state.data.map((value, index) => {
+                return (
+                <td class='c-customer-journey-map__thinking'>
+                  <TextareaAutoHeight
+                    className='c-customer-journey-map__textarea'
+                    changeTextarea={this.onChangeHandler.bind(this)} 
+                    text={value.thinking}
+                  />
+                </td>
+                )
+              })}
+            </tr>
+            <tr>
+              <th>DOING</th>
+              {this.state.data.map((value, index) => {
+                return (
+                <td class='c-customer-journey-map__doing'>
+                  <TextareaAutoHeight
+                    className='c-customer-journey-map__textarea'
+                    changeTextarea={this.onChangeHandler.bind(this)}
+                    text={value.doing}
+                  />
+                </td>
+                )
+              })}
+            </tr>
+            <tr>
+              <th>TOUCHPOINT</th>
+              {this.state.data.map((value, index) => {
+                return (
+                <td class='c-customer-journey-map__touch-point'>
+                  <TextareaAutoHeight
+                    className='c-customer-journey-map__textarea'
+                    changeTextarea={this.onChangeHandler.bind(this)}
+                    text={value.touchpoint}
+                  />
+                </td>
+                )
+              })}
+            </tr>
+            <tr>
+              <th>LABEL</th>
+              {this.state.data.map((value, index) => {
+                return (
+                <td class='c-customer-journey-map__label'></td>
+                )
+              })}
+            </tr>
+          </table>
+          <span>+</span>
+        </ContentScroller>
         <FooterSticky>
           <a onClick={this.props.history.goBack.bind(this)}>
             <FooterStickyBack />
@@ -129,13 +132,15 @@ class CustomerJourneyMap extends Component {
           <BtnSave onClick={this.onSave.bind(this)}>SAVE</BtnSave>
         </FooterSticky>
         <Toast />
-      </ContentScroller>
+      </>
     )
   }
 }
 
 const ContentScroller = styled.div`
   overflow-x: auto;
+  overflow-y: none;
+  display: flex;
 `
 const Toast = styled(ToastContainer)`
   color: #fff !important;

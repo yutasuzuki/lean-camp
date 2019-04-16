@@ -14,8 +14,8 @@ const page3 = () => <div><h1>page3</h1>3枚目のページです</div>
 class ProjectComponent extends PureComponent {
   constructor(props) {
     super(props);
+
     if (this.props.match.params.id) {
-      if (this.props.projects.item.id) return;
       const params = {
         id: this.props.match.params.id
       };

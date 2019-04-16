@@ -16,10 +16,15 @@ class TextareaAutoHeight extends Component {
     this.textAutoHeightHandler.call(textarea);
   }
 
+  componentWillUnmount() {
+    const textarea = findDOMNode(this.refs.textarea);
+    textarea.removeEventListener('change', this.textAutoHeightHandler);
+    textarea.removeEventListener('input', this.textAutoHeightHandler);
+  }
+
   textAutoHeightHandler() {
-    console.log(this.style)
-    this.style.height = 0;
-    const lineHeight = parseInt(this.style.height.replace(/px/, ''));
+    this.style.height = '144px';
+    const lineHeight = parseInt(this.style.lineHeight.replace(/px/, ''));
     const doubleLineHeight = lineHeight * 2;
     let scrollHeight = parseInt(this.scrollHeight);
     if(scrollHeight < doubleLineHeight){
@@ -27,6 +32,7 @@ class TextareaAutoHeight extends Component {
     }
     this.style.height = `${scrollHeight}px`;
   }
+
 
   render() {
     return (
