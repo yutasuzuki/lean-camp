@@ -38,7 +38,7 @@
     "yarn": "^1.13.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "gsap": "^2.1.2",
     "open-iconic": "^1.1.1",
     "pixi.js": "^5.0.0-rc.2",
